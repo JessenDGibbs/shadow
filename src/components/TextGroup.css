@@ -1,0 +1,11 @@
+.text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .text-document p {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+  }

@@ -1,0 +1,49 @@
+TODO:
+1. full scope Notion integration. Get all pages. 
+2. persistence with data storage -> use S3 for now.
+3. this really should be deployed on the web if we're going for persistence
+
+Feb 14 Notes:
+1. Nothing done with notion: i don't think it's the top priority 
+    right now and the api doesn't make things easy
+2. persistence is setup locally: using a persistenceclient provided from 
+    Chroma and writing to a local file. Eventually I'll want to migrate the entire
+    Chroma server tot he cloud to make things easy for but for now local is fine since 
+    nothing else is cloud-based (RIP)
+3. I know....: I should start to look at the individual pieces
+    Right now there is:
+    1) the python API that needs to be hosted
+    2) the react frontend that needs to be hosted
+    3) Chroma that needs to be hosted. Although they will eventually support persistent hosting.
+        For now running it on Docker or AWS is fine
+4. Got the Citaion store setup in it's own vector space:
+    1) first required a restructuring of the OpenAI response to use parsable JSON format
+        that has an attribute for writing and file content
+    2) then I take the list of written citations found and embed each of them with a link to 
+        the origional file
+    3) then I added a Citations tab in the show component that only searches for citations
+    4) I updated the Document card so that if the type is citation then it's clickable and
+        opens the source file for the citation
+5. I added an easter egg reset function that clears all of the data from the file, text,
+    and citations vector stores. Still requires a restart of the server since it needs to
+    reinitialize the chroma clients
+
+TODOS:
+1. citation entries are only made for Dropbox. need to add it to local file import as well
+2. when the chroma collections are deleted I need to delete the files in the chroma-store
+    folder as well to declutter
+
+
+Docker commands:
+
+Build: 
+docker build -t shadow .   
+
+Clear the containers: 
+docker stop shadow-container
+docker rm shadow-container
+
+Create the container:
+docker run -d -p 5001:5000 --name shadow-container -v shadow-volume:/app/public shadow
+
+

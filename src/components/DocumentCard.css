@@ -1,0 +1,212 @@
+.document-card {
+  background-color: transparent;
+  color: #46453e;
+  border-radius: 4px;
+  border: 2px solid #e6e5d9;
+  overflow: auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%; /* Adjust based on your preference */
+}
+
+.document-card-text {
+  background-color: transparent;
+  border: 1px solid #b8b7b0;
+
+  color: #46453e;
+  border-radius: 0px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%; /* Adjust based on your preference */
+}
+
+
+
+/* Grid view specific styles */
+.documents-grid .document-card {
+  max-height: 300px; /* Maximum height for the document card in grid view */
+  margin: 10px; /* Adjusted margin for grid layout */
+  flex: 1 0 calc(50% - 20px); /* Flex basis for two columns, accounting for margin */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.documents-grid .document-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure images cover the area without distorting */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .documents-grid .document-card {
+    flex: 1 0 100%; /* Full width on smaller screens */
+    max-height: 250px; /* Adjusted max-height for smaller screens */
+  }
+}
+
+
+.pdf-container {
+  width: 100%; /* Full width of the card */
+  display: flex;
+  justify-content: center; /* Center the PDF horizontally */
+  align-items: start; /* Center the PDF vertically */
+  overflow: hidden; /* Hide overflow */
+  height: auto;
+}
+
+
+.toggle-document-btn {
+  background-color: transparent;
+  color: #575757;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-document-btn:hover {
+  background-color: #ebe9da;
+}
+
+.document-content, .metadata-container {
+  overflow-y: auto; /* In case of overflow */
+  flex: 1;
+  padding: 15px;
+  max-width: 100%;
+}
+
+.uploaded-image, object {
+  width: 100%; /* Ensure images and PDFs scale correctly */
+  height: auto;
+  display: block; /* Remove extra space below images */
+}
+
+.metadata-container {
+  display: flex;
+  justify-content: space-between; /* Adjust spacing between metadata items */
+  align-items: center; /* Align items vertically in the center */
+  padding: 10px 15px; /* Adjust padding as needed */
+  color: #8f8d7d; /* Slightly muted text color for metadata */
+  max-height: 40px;
+  min-height: 40px;
+  overflow: hidden; /* Hide overflow */
+
+}
+
+.react-pdf__Page {
+  width: 100%;
+  margin-bottom: 20px; /* Space below the PDF page */
+  max-height: 700px !important;
+  overflow: hidden; /* Hide overflow */
+
+
+}
+
+.react-pdf__Page__canvas {
+  max-height: 700px !important;
+}
+
+.react-pdf__Page__annotations.annotationLayer, .react-pdf__Page__textContent.textLayer {
+  height: 0;
+  visibility: hidden;
+}
+
+.react-pdf__Page {
+  max-height: 860px;
+}
+
+
+.react-pdf__Document {
+  height: auto;
+}
+
+.metadata-type-pill {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px; /* Gives the pill shape */
+  color: #fcfbf2;
+  font-size: 0.8em;
+}
+
+.metadata-type-text {
+  background-color: #353935; /* Green */
+  border: 1px solid #1c1d1c;
+}
+
+.metadata-type-file {
+  background-color: #353935; /* Green */
+  border: 1px solid #1c1d1c;
+}
+
+.metadata-type-notion {
+  background-color: #353935; /* Green */
+  border: 1px solid #1c1d1c;
+}
+
+.metadata-type-dropbox {
+  background-color: #353935; /* Green */
+  border: 1px solid #1c1d1c;
+}
+
+.metadata-type-citation {
+  background-color: #353935; /* Green */
+  border: 1px solid #1c1d1c;
+}
+
+.metadata-type {
+  display: flex; /* Use flexbox to align children */
+  align-items: center; /* Align items vertically at their center */
+  justify-content: center; /* Center the items horizontally */
+  gap: 10px;
+  margin: 0px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* High z-index to ensure it's on top */
+}
+
+.document-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fcfbf2;
+  padding: 40px;
+  padding-top: 20px;
+  border-radius: 5px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  border: 2px solid #efeee5;
+  min-height: 800px;
+  max-height: auto;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.modal-close {
+  float: right;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  color: #c7c7c7
+}
+

@@ -1,0 +1,176 @@
+
+
+
+
+/*V2---------------*/
+
+
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  background-color: #fcfbf2; /* Soft off-white background */
+  overflow: hidden; /* This will disable scrolling */
+
+}
+
+/* Flex container for main layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-height: 96vh;
+  min-height: 96vh;
+  margin: 40px;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1); /* Inset shadow configuration */
+  border-radius: 20px 20px 0px 0px;
+  border: 1px solid #e6e5d9;
+  background-color: #fcfbf2;
+  overflow: hidden; 
+}
+
+.nav-container {
+  display: flex;
+  justify-content: right; /* Adjusts the space between components */
+  align-items: center; /* Aligns items vertically in the center */
+  margin-right: 40px;
+  margin-left: 40px;
+  padding-left: 0px;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+  opacity: 1;
+  visibility: visible;
+  animation-fill-mode: forwards; /* Keep the container in the state of the last keyframe when the animation finishes */
+  animation-duration: 0.5s; /* Animation duration */
+  animation-timing-function: ease; /* Animation timing function for a smooth effect */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.nav-container.show {
+  animation-name: fadeIn; /* Apply the fadeIn animation */
+  
+}
+
+.nav-container.hide {
+  animation-name: fadeOut; /* Apply the fadeOut animation */
+  pointer-events: none; /* Prevent interaction with the container while it is animating out */
+}
+
+
+
+/* Simplified column styles */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%; /* Full width on smaller screens */
+  max-width: 800px; /* Max width for larger screens */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: transparent; /* Pure white for content backgrounds */
+  border-radius: 8px; /* Slight rounding of corners for a softer look */
+  max-height: 95vh; /* Adjust based on your needs */
+  overflow-y: auto; /* Enables vertical scrolling */
+  border-radius: 20px;
+}
+
+.flex-column {
+  flex: 1; /* Allows the column to expand and fill the available space */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40%; /* Full width on smaller screens */
+  box-sizing: border-box;
+  background-color: #fff; /* Pure white for content backgrounds */
+  border-radius: 4px; /* Slight rounding of corners for a softer look */
+  max-height: 96vh; /* Adjust based on your needs */
+  margin: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .column {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Component container */
+.component-container {
+  padding: 20px;
+  margin: 0;
+  background-color: #fff; /* Pure white for a clean look */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Very soft shadow for depth */
+}
+
+/* Editor container with minimal styling for focus on content */
+.editor-container {
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid #e0e0e0; /* Very light grey border */
+}
+
+/* Navigation and content styling */
+.top-nav, .main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-nav {
+  padding: 10px 0;
+  border: none;
+}
+
+.main-content {
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Utility classes for text and buttons */
+.text-primary {
+  color: #606060; /* Dark grey for primary text elements */
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #f5f5f5; /* Very light grey for buttons */
+  color: #333; /* Dark grey text on buttons for readability */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #e0e0e0; /* Slightly darker grey on hover for feedback */
+}

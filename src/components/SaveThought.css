@@ -1,0 +1,134 @@
+/* Container for the entire component, giving it a document editor feel */
+.thought-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: stretch; /* Ensure textarea fills the width */
+    padding: 0px;
+    margin-top: 0px;
+    max-width: 700px; /* Optimal reading width */
+    background-color: transparent;
+    border-radius: 8px; /* Soften edges */
+    height: 800px; /* Adjust based on content */
+    max-height: auto; /* Minimum height to make it look like a full editor */
+  }
+  
+  /* Styles for the textarea to make it expansive and comfortable for editing */
+  .textarea {
+    flex: 1; /* Allows textarea to expand and fill the container's height */
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 16px; /* Comfortable reading size */
+    line-height: 1.5; /* Improve readability */
+    resize: none; /* Disable resizing to maintain the editor's layout */
+    background-color: transparent; /* Slightly off-white for contrast with container */
+    color: #333; /* High contrast for readability */
+    outline: none; /* Remove focus outline */
+    min-height: 500px;
+    border: none;
+  }
+  
+  .textarea:focus {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 0 0.2rem rgba(0,123,255,.25); /* Subtle glow effect */
+  }
+  
+  /* Button styling for a modern, interactive look */
+  .create-button {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    padding: 10px 25px;
+    background-color: transparent;
+    color: #343434;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: monospace;
+    margin-bottom: 10px;
+    font-size: 16px;
+    max-width: 200px;
+    max-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid #181818;
+
+  }
+  
+  .create-button:hover {
+    background-color: #f1efe4; /* Darker shade on hover */
+  }
+  
+  .markdown-preview {
+    z-index: 1000;
+    flex: 1;
+    padding: 16px;
+    border: none;
+    background-color: transparent; /* Light grey background for the preview */
+    overflow-y: auto; /* In case of overflow */
+    color: #333;
+  }
+
+  /*SimpleMDE styling*/
+
+/* Remove border from the SimpleMDE editor */
+.CodeMirror, .CodeMirror-scroll .CodeMirror-wrap {
+  border: none !important; /* Removes border around the editor area */
+  background-color: transparent !important; /* Dark background for the editor */
+  color: #333 !important;
+  min-height: 800px;
+}
+
+.CodeMirror {
+  border: none !important; /* Removes border around the editor area */
+
+
+}
+
+/* Adjust the cursor color for better visibility */
+.CodeMirror-cursor {
+  border-left: 2px solid #333 !important;
+}
+
+.CodeMirror-lines {
+  padding: 10px !important; /* Optional: Adds padding inside the editor for better text alignment */
+}
+
+.editor-toolbar {
+  border: none !important; /* Removes border around the toolbar */
+}
+
+.simplemde-container .editor-preview-active .editor-preview-full .editor-preview editor-preview-active,
+.simplemde-container .CodeMirror,
+.simplemde-container .CodeMirror-scroll {
+  color: #333; /* Light text color for contrast */
+}
+
+/* Adjusting the color for headings, links, etc., in preview mode */
+.simplemde-container .editor-preview h1,
+.simplemde-container .editor-preview h2,
+.simplemde-container .editor-preview h3,
+.simplemde-container .editor-preview h4,
+.simplemde-container .editor-preview h5,
+.simplemde-container .editor-preview h6,
+.simplemde-container .editor-preview a {
+  color: #333; /* Light text color for contrast */
+}
+
+.simplemde-container .editor-preview p,
+.simplemde-container .editor-preview li {
+  color: #333; /* Slightly dimmer text color for regular text */
+}
+
+.EasyMDEContainer {
+  height: 100%;
+}
+
+  
+.saved-banner {
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #749e77; /* Green background */
+  color: white;
+  border-radius: 0px;
+  z-index: 1000; /* Ensure it's above other content */
+}

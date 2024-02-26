@@ -19,7 +19,7 @@ from notion_client import Client
 notion = Client(auth="secret_eZ7XCn6UkjhFLMhnjeQ0tcNrwp9sPamg5NwvdGN2ygv")
 # chroma config
 chroma_client = chromadb.PersistentClient(path="../public/chroma-store")
-api_key = "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"
+api_key = "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"
 #dropbox config
 app = Flask(__name__)
 app.secret_key = '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'
@@ -31,7 +31,6 @@ def home():
     return jsonify({"echo": "App is alive!"})
 
 @app.route('/reset', methods=['POST'])
-@cross_origin()
 def reset():
     chroma_client.delete_collection("text_collection")
     chroma_client.delete_collection("file_collection")
@@ -39,8 +38,7 @@ def reset():
     return jsonify({'reset': 'done'})
 
 #to post a new thought to chroma
-@app.route('/echo', methods=['POST', 'OPTIONS'])
-@cross_origin()
+@app.route('/echo', methods=['POST'])
 def echo():
     text_collection = chroma_client.get_or_create_collection(name="text_collection")
     file_collection = chroma_client.get_or_create_collection(name="file_collection")
@@ -62,7 +60,6 @@ def echo():
         return jsonify({"echo": data})
     
 @app.route('/getFile', methods=["GET"])
-@cross_origin()
 def user_content():
     filepath = request.args.get('file_path')
     filename = filepath.rsplit('/', 1)[-1]
@@ -72,8 +69,7 @@ def user_content():
     return send_from_directory(folder, filename)
 
 # to get related thought from chroma
-@app.route('/show', methods=['POST', 'OPTIONS'])
-@cross_origin()
+@app.route('/show', methods=['POST'])
 def show():
     text_collection = chroma_client.get_or_create_collection(name="text_collection")
     file_collection = chroma_client.get_or_create_collection(name="file_collection")
@@ -161,7 +157,7 @@ def show():
     }
 
     print("\n\n\n", final_structure, "\n\n\n")
-    return jsonify(final_structure)
+    return jsonify(final_structure), 200
 
 # to upload a document and save it
 @app.route('/upload', methods=['POST'])
@@ -179,7 +175,7 @@ def upload_file():
     allowed_extensions = ['.pdf', '.jpg', '.jpeg', '.png']
     if file and any(file.filename.endswith(ext) for ext in allowed_extensions):
         filename = secure_filename(file.filename)
-        file.save(os.path.join('/app/public/user_content', filename))
+        file.save(os.path.join('./public/user_content', filename))
         print(jsonify({'file_path': '/user_content/' + filename}))
         return jsonify({'file_path': '/user_content/' + filename})
     return jsonify({'error': 'Invalid file type'}), 400
@@ -197,10 +193,10 @@ def convert_pdf():
     image_paths = []
     # Check if the file is a PDF, if not, skip PDF conversion
     if file_extension.lower() == '.pdf':
-        image_paths = convertPDF('/app/public' + file_path, base_filename)
+        image_paths = convertPDF('./public' + file_path, base_filename)
     else:
         # For image files, use the original file path
-        image_path = '/app/public' + file_path
+        image_path = './public' + file_path
         image_paths.append(image_path)
     page_number = 0
     for image_path in image_paths:
@@ -228,7 +224,7 @@ def saveFile(file, path, extension, page_number):
     print("\n\n\nresponse: ", response, "\n\n\n")
     print(extension)
     current_date = datetime.datetime.now().strftime("%Y-%m-%d")
-    path = "/app/public" + path
+    path = "./public" + path
     id = random.random()
     # Assuming 'writing' is a list of items you want to iterate over
     for item in response['writing']:
@@ -259,7 +255,7 @@ def convertPDF(path, base_filename):
     for page_num in range(len(pdf_document)):
         page = pdf_document[page_num]
         pix = page.get_pixmap()
-        image_path = f'/app/public/user_content/{base_filename}_{page_num}.png'  # Append page number to base_filename
+        image_path = f'./public/user_content/{base_filename}_{page_num}.png'  # Append page number to base_filename
         pix.save(image_path)
         image_paths.append(image_path)
         print(image_paths)

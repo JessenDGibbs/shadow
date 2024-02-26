@@ -60,6 +60,7 @@ function ShowComponent() {
       });
   };
 
+  //add onClick={handleReset} back to the document-type-pill element to enable DB reset
   const handleReset = () => {
     callReset()
       .then(response => {
@@ -111,7 +112,7 @@ function ShowComponent() {
         <div className="counts-container">
           <div className="counts-pills">
             {Object.entries(countDocumentTypes()).map(([type, count]) => (
-              <div key={type} className="document-type-pill" onClick={handleReset}>{`${type}: ${count}`}</div>
+              <div key={type} className="document-type-pill">{`${type}: ${count}`}</div>
             ))}
             </div>
             <div className="view-toggle">

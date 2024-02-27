@@ -11,7 +11,6 @@
     background-color: transparent;
     border-radius: 8px; /* Soften edges */
     min-height: 77vh; /* Minimum height for a full editor look */
-    font-family: monospace;
     color: #282828;
     width: 100%;
   }
@@ -32,7 +31,6 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: monospace;
   }
   
   .button-group button:hover {
@@ -60,7 +58,6 @@
     background-color: transparent; /* Slightly off-white for contrast with container */
     color: #282828; /* High contrast for readability */
     outline: none; /* Remove focus outline */
-    font-family: monospace;
     border: none;
   }
   
@@ -77,7 +74,6 @@
     border-radius: 32px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: monospace;
     border: none;
   }
   
@@ -97,7 +93,6 @@
     background-color: transparent; /* Light background for contrast */
     width: 100%; /* Ensure it fills its container */
     box-sizing: border-box; /* Include padding in the element's total width */
-    font-family: monospace;
     height: auto;
   }
 
@@ -202,6 +197,8 @@
   margin-bottom: 10px;
   border: 1px dashed #d5d3c6;
   padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   border-radius: 8px;
   line-height: 1.5;
 }

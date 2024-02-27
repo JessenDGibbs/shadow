@@ -2,7 +2,6 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    font-family: monospace;
     color: #282828;
     padding-left: 20px;
     padding-right: 20px;
@@ -15,7 +14,6 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: monospace;
     border-radius: 8px;
     border: 2px solid #efeee5;
 
@@ -34,7 +32,6 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: monospace;
     border-radius: 8px;
     border: 2px solid #efeee5;
     /*box-shadow: 0 8px 16px rgba(0,0,0,0.2);*/
@@ -95,7 +92,6 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: monospace;
     margin-top: 40px;
     border-radius: 8px;
     border: 1px solid #dcdbd2;

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import SaveThought from './components/SaveThought';
 import ShowComponent from './components/ShowComponent';
 import UploadButton from './components/UploadButton';
 import { pdfjs } from 'react-pdf';
@@ -16,7 +15,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function App() {
   const [isNavVisible, setIsNavVisible] = useState(true);
-  const navClass = isNavVisible ? 'nav-container show' : 'nav-container hide';
   return (
     <Context> 
       <Router>
@@ -41,9 +39,6 @@ function App() {
            onMouseEnter={() => setIsNavVisible(false)} 
            onMouseLeave={() => setIsNavVisible(true)}
         >
-          {/* <div className="flex-column">
-            <SaveThought />
-          </div> */}
           <div className="column"> 
               <ShowComponent />
           </div>

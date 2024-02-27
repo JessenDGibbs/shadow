@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { callShowEndpoint, callNotion, callReset } from '../api';
+import { callShowEndpoint, callReset } from '../api';
 import DocumentCard from './DocumentCard';
 import './ShowComponent.css'; 
 import {Search, List, Grid } from 'react-feather';
-import PagesGroup from './PagesGroup';
 
 
 function ShowComponent() {
   const [input, setInput] = useState('');
   const [responseData, setResponseData] = useState(null);
   const [rawData, setRawData] = useState(null);
-  const [searchMode, setSearchMode] = useState('broad'); // Default to 'precise'
+  const [searchMode, setSearchMode] = useState('everything'); // Default to 'everything'
   const [viewMode, setViewMode] = useState('list'); // Default to 'list'
   
 
@@ -49,7 +48,11 @@ function ShowComponent() {
   const handleClick = () => {
     callShowEndpoint(input, searchMode)
       .then(response => {
+        console.log("\n\n\nraw:\n",response.data,"\n\n\n")
+
         setRawData(response.data)
+        console.log("\n\n\nraw data:\n",rawData,"\n\n\n")
+
         const grouped = groupDocumentsByPath(response.data)
         console.log("\n\n\ngrouped:\n",grouped,"\n\n\n")
         setResponseData(grouped);
@@ -88,9 +91,7 @@ function ShowComponent() {
   return (
       <div className="show-component">
         <div className="button-group">
-          <button onClick={() => setSearchMode('focused')} className={searchMode === 'focused' ? 'active' : ''}>Focused</button>
-          <button onClick={() => setSearchMode('broad')} className={searchMode === 'broad' ? 'active' : ''}>Broad</button>
-          <button onClick={() => setSearchMode('everything')} className={searchMode === 'everything' ? 'active' : ''}>All files</button>
+          <button onClick={() => setSearchMode('everything')} className={searchMode === 'everything' ? 'active' : ''}>Files</button>
           <button onClick={() => setSearchMode('citations')} className={searchMode === 'citations' ? 'active' : ''} style={{fontFamily: 'Comic Sans MS'}}>Annotations</button>
 
         </div>
@@ -123,22 +124,10 @@ function ShowComponent() {
         {rawData && (
             <div className={viewMode === 'grid' ? 'documents-grid' : ''}>
             {rawData.documents[0].map((document, index) => (
-                <DocumentCard key={index} document={document} metadata={rawData.metadatas[0][index]} />
+                <DocumentCard key={index} document={document} metadata={rawData.metadatas[0][index]} id={rawData.ids[0][index]} />
             ))}
         </div>
         )}
-        {/* {responseData && (
-        <div className={viewMode === 'grid' ? 'documents-grid' : ''}>
-          {Object.entries(groupDocumentsByPath()).map(([path, group], index) => {
-            console.log
-            // Check if the group contains more than one document
-            if (group.documents.length > 1) {
-              // Render the Group component for multiple documents
-              return <PagesGroup key={index} group={group} />;
-            }
-          })}
-        </div>
-      )} */}
       </div>
       
   );

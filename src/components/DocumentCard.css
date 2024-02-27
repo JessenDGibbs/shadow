@@ -210,3 +210,18 @@
   color: #c7c7c7
 }
 
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit; /* Inherits the text color from the parent */
+  padding: 10px;
+  color: #c7c7c7;
+}
+
+/* Optional: Add a hover effect for better user interaction */
+.icon-button:hover {
+  opacity: 0.7;
+  color: #b43030;
+}
+

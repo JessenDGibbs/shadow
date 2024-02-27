@@ -1,26 +1,27 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Document, Page } from 'react-pdf';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './DocumentCard.css'; // Import the CSS file for styling
 import ReactMarkdown from 'react-markdown';
-import { X, Calendar } from 'react-feather';
-import { getFile } from '../api';
+import { X, Calendar, Trash } from 'react-feather';
+import { sendToDelete } from '../api';
 
 
-function DocumentCard({ document, metadata }) {
+function DocumentCard({ document, metadata, id }) {
   const [showDocumentData, setShowDocumentData] = useState(false);
   const [numPages, setNumPages] = useState(null);
   const [showAllPages, setShowAllPages] = useState(false); // New state to manage visibility of all pages
   const [showModal, setShowModal] = useState(false);
   const [pdfUrl, setPdfUrl] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [isVisible, setIsVisible] = useState(true); // Add this line
+
 
   
   useEffect(() => {
     const loadFile = async (attempt = 1) => {
       if (metadata.path) {
         try {
-          const response = await fetch(`http://127.0.0.1:5001/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`https://fa5a-2001-569-7dbb-ca00-a448-c2b-8dc-f2dc.ngrok-free.app/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -43,7 +44,7 @@ function DocumentCard({ document, metadata }) {
     const loadImage = async (attempt = 1) => {
       if (metadata.path) {
         try {
-          const response = await fetch(`http://127.0.0.1:5001/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`https://fa5a-2001-569-7dbb-ca00-a448-c2b-8dc-f2dc.ngrok-free.app/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -110,27 +111,14 @@ function DocumentCard({ document, metadata }) {
             return ''; // Default case if none match
     }
 };
-  // Function to determine the text color based on metadata.type
-  const determineTextColor = (type) => {
-    switch (type) {
-      case 'Notion':
-        return '#9C27B0';
-      case 'file':
-        return '#2196F3';
-      case 'text':
-        return '#4CAF50';
-      case 'Dropbox':
-        return '#0062FF';
-      default:
-        return 'initial'; // Default text color if none of the types match
-    }
-  };
+ 
 
-  // Use the function to set the text color
-  const textStyle = {
-    color: determineTextColor(metadata.type),
-  };
 
+
+  const handleDelete = () => {
+    sendToDelete(id);
+    setIsVisible(false); // Hide the card
+  };
 
   const renderFileContent = () => {
 
@@ -151,6 +139,8 @@ function DocumentCard({ document, metadata }) {
     }
   };
 
+  if (!isVisible) return null; // If not visible, don't render anything
+
   if (metadata.type === 'file' || metadata.type === 'Dropbox') {
     // Check if the file is a PDF
     if (metadata.path.endsWith('.pdf')) {
@@ -168,6 +158,9 @@ function DocumentCard({ document, metadata }) {
           <div className="metadata-container" >
             <p className={`metadata-type-pill ${getMetadataTypeClass(metadata.type)}`}>{metadata.type}</p>
             <p className="metadata-type"><Calendar size={16}/> {metadata.date}</p>
+            <button className="delete-button icon-button" onClick={handleDelete}>
+            <Trash size={16} />
+          </button>
           </div>
         </div>
       );
@@ -182,6 +175,9 @@ function DocumentCard({ document, metadata }) {
           <div className="metadata-container" >
             <p className={`metadata-type-pill ${getMetadataTypeClass(metadata.type)}`}>{metadata.type}</p>
             <p className="metadata-type"><Calendar size={16}/> {metadata.date}</p>
+            <button className="delete-button icon-button" onClick={handleDelete}>
+            <Trash size={16} />
+            </button>
           </div>
         </div>
       );
@@ -201,6 +197,9 @@ function DocumentCard({ document, metadata }) {
       <div className="metadata-container" >
           <p className={`metadata-type-pill ${getMetadataTypeClass(metadata.type)}`}>{metadata.type}</p>
           <p className="metadata-type"><Calendar size={16}/> {metadata.date}</p>
+          <button className="delete-button icon-button" onClick={handleDelete}>
+            <Trash size={16} />
+          </button>
         </div>
     </div>
     );
@@ -211,6 +210,9 @@ function DocumentCard({ document, metadata }) {
         <div className="metadata-container" >
           <p className={`metadata-type-pill ${getMetadataTypeClass(metadata.type)}`}>{metadata.type}</p>
           <p className="metadata-type"><Calendar size={16}/> {metadata.date}</p>
+          <button className="delete-button icon-button" onClick={handleDelete}>
+            <Trash size={16} />
+          </button>
         </div>
       </div>
     );

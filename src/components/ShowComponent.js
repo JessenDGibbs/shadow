@@ -9,9 +9,48 @@ function ShowComponent() {
   const [input, setInput] = useState('');
   const [responseData, setResponseData] = useState(null);
   const [rawData, setRawData] = useState(null);
+  const [filtered, setFiltered] = useState(null);
   const [searchMode, setSearchMode] = useState('everything'); // Default to 'everything'
   const [viewMode, setViewMode] = useState('list'); // Default to 'list'
+  const [isFiltered, setIsFiltered] = useState(false); // Default to 'list'
+  const [selectedType, setSelectedType] = useState(null); // New state for tracking the selected document type
+
+
   
+  function filterDataByType(data, type) {
+    if (type === selectedType) {
+      // If so, clear the filtered data and selected type to revert to unfiltered view
+      setFiltered(null);
+      setIsFiltered(false);
+      setSelectedType(null);
+    } else {
+      // Your existing filtering logic
+      const filteredData = {
+        ids: [[]],
+        distances: [[]],
+        metadatas: [[]],
+        documents: [[]],
+        embeddings: data.embeddings,
+        uris: data.uris,
+        data: data.data
+      };
+
+      if (data.metadatas[0]) {
+        data.metadatas[0].forEach((metadata, index) => {
+          if (metadata.type === type) {
+            filteredData.metadatas[0].push(metadata);
+            if (data.ids && data.ids[0]) filteredData.ids[0].push(data.ids[0][index]);
+            if (data.distances && data.distances[0]) filteredData.distances[0].push(data.distances[0][index]);
+            if (data.documents && data.documents[0]) filteredData.documents[0].push(data.documents[0][index]);
+          }
+        });
+      }
+      // Update the state with the filtered data and mark the view as filtered
+      setFiltered(filteredData);
+      setIsFiltered(true);
+      setSelectedType(type);
+    }
+  };
 
   function groupDocumentsByPath(data) {
     const groupedDocuments = {};
@@ -91,8 +130,8 @@ function ShowComponent() {
   return (
       <div className="show-component">
         <div className="button-group">
-          <button onClick={() => setSearchMode('everything')} className={searchMode === 'everything' ? 'active' : ''}>Files</button>
-          <button onClick={() => setSearchMode('citations')} className={searchMode === 'citations' ? 'active' : ''} style={{fontFamily: 'Comic Sans MS'}}>Annotations</button>
+          <button onClick={() => {setIsFiltered(false); setSearchMode('everything');}} className={searchMode === 'everything' ? 'active' : ''}>Files</button>
+          <button onClick={() => {setIsFiltered(false); setSearchMode('citations');}} className={searchMode === 'citations' ? 'active' : ''} style={{fontFamily: 'Comic Sans MS'}}>Annotations</button>
 
         </div>
         <div className="input-group"> 
@@ -113,7 +152,7 @@ function ShowComponent() {
         <div className="counts-container">
           <div className="counts-pills">
             {Object.entries(countDocumentTypes()).map(([type, count]) => (
-              <div key={type} className="document-type-pill">{`${type}: ${count}`}</div>
+              <div key={type} className={`document-type-pill ${selectedType === type ? 'selected' : ''}`} onClick={() => filterDataByType(rawData, type)}>{`${type}: ${count}`}</div>
             ))}
             </div>
             <div className="view-toggle">
@@ -137,12 +176,26 @@ function ShowComponent() {
             </div>
         )}
         {rawData && (
+        isFiltered ? (
+            <div className={viewMode === 'grid' ? 'documents-grid' : ''}>
+            {filtered.documents[0].map((document, index) => (
+                <DocumentCard key={index} document={document} metadata={filtered.metadatas[0][index]} id={filtered.ids[0][index]} />
+            ))}
+        </div>
+        ) : (
             <div className={viewMode === 'grid' ? 'documents-grid' : ''}>
             {rawData.documents[0].map((document, index) => (
                 <DocumentCard key={index} document={document} metadata={rawData.metadatas[0][index]} id={rawData.ids[0][index]} />
             ))}
         </div>
-        )}
+        )
+      )}
+      {/* Optionally, render a message or component when rawData is not present */}
+      {!rawData && (
+          <div className="no-data-message">
+              <h2>No data available. Please perform a search.</h2>
+          </div>
+      )}
       </div>
       
   );

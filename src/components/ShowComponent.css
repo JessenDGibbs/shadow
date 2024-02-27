@@ -122,11 +122,12 @@
     padding: 5px 10px;
     background-color: transparent; /* Example pill background color */
     color: #87877f;
-    border-radius: 0px; /* Gives the pill shape */
+    border-radius: 2px; /* Gives the pill shape */
     border: 1px solid #87877f;
     text-align: center;
     font-size: 0.875rem; /* Adjust as needed */
     white-space: nowrap; /* Prevents the text inside the pill from wrapping */
+    cursor: pointer;
   }
 
   .input-group {
@@ -202,4 +203,17 @@
   border-radius: 8px;
   line-height: 1.5;
 }
+
+.document-type-pill.selected {
+  background-color: #353935; /* Example: Blue background */
+  color: #f1efe4; /* White text */
+  border-radius: 2px; /* Optional: Rounded corners */
+}
+
+.document-type-pill:hover {
+  background-color: #353935;
+  color: #f1efe4; /* White text */
+
+}
+
   

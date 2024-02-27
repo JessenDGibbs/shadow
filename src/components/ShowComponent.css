@@ -180,4 +180,29 @@
   color: #434343; /* Even darker for the active view mode */
 }
 
+.no-data-card {
+  padding: 20px;
+  border: 1px solid #d5d3c6;
+  border-radius: 8px;
+  text-align: left;
+  color: #3f3f3f;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+}
+
+.get-started-list {
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.get-started-list li {
+  margin-bottom: 10px;
+  border: 1px dashed #d5d3c6;
+  padding: 10px;
+  border-radius: 8px;
+  line-height: 1.5;
+}
   

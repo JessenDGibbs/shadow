@@ -121,6 +121,21 @@ function ShowComponent() {
             <button onClick={() => setViewMode('grid')} className={viewMode === 'grid' ? 'active' : ''}><Grid /></button>
         </div>
         </div>
+        {!rawData && (
+            <div className="no-data-card">
+                <h1>✌️</h1>
+                <h2> Let's get started with Shadow notes</h2>
+                <ol className="get-started-list">
+                  <li>Move your cursor to the top of the screen to view your tools. You can create a quick note, import images or PDFs, or connect files from sources like Notion or Dropbox. Any handwriting from uploaded documents can be found in the Annotations tab and all text is searchable.</li>
+                  <li>Search for Files or annotations using the toggle. In file mode, you can enter annotation text into the search bar to pull up the file it's associated with (Try typing "come back here" to start).</li>
+                  <li>Hit the search icon without entering any search terms to see everything</li>
+                  <li>In File search, if you click on PDF pages, you can view the entire PDF.</li>
+                  <li>In Annotation search, click on the annotation to pull up the relevant page.</li>
+                </ol>
+                <p>Note: Unless you're Jessen, you won't be able to connect sources like Notion or Dropbox, but hopefully that'll be sorted out soon!</p>
+    
+            </div>
+        )}
         {rawData && (
             <div className={viewMode === 'grid' ? 'documents-grid' : ''}>
             {rawData.documents[0].map((document, index) => (

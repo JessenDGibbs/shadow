@@ -190,12 +190,6 @@ function ShowComponent() {
         </div>
         )
       )}
-      {/* Optionally, render a message or component when rawData is not present */}
-      {!rawData && (
-          <div className="no-data-message">
-              <h2>No data available. Please perform a search.</h2>
-          </div>
-      )}
       </div>
       
   );

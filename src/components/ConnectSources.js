@@ -3,6 +3,8 @@ import Modal from './SourcesModal'; // Assuming you have a Modal component
 import './ConnectSources.css'; // CSS file for styling
 import { callNotion, callDropbox } from '../api';
 import { Database } from 'react-feather';
+import { useMyContext } from '../contexts/Context'; // Adjust the path as necessary
+
 
 
 function ConnectSources({ sources, buttonText, actionText, title, subtitle }) {
@@ -12,6 +14,8 @@ function ConnectSources({ sources, buttonText, actionText, title, subtitle }) {
   const [responseData, setResponseData] = useState('');
   const apiKeyRef = useRef(null);
   const pageIdRef = useRef(null);
+  const { updateFileUploaded } = useMyContext();
+
 
   const handleUpload = async (event) => {
     event.preventDefault(); // Prevent the form from submitting in the traditional way
@@ -22,6 +26,7 @@ function ConnectSources({ sources, buttonText, actionText, title, subtitle }) {
       console.log(pageId)
       try {
         const new_content = await callDropbox(pageId, apiKey);
+        updateFileUploaded();
         console.log(new_content)
       } catch (error) {
         console.error(error);

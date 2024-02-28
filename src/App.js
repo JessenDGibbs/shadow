@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ShowComponent from './components/ShowComponent';
 import UploadButton from './components/UploadButton';
 import { pdfjs } from 'react-pdf';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css'; // Make sure this path is correct
 import ConnectSources from './components/ConnectSources';
-import { Context } from './contexts/Context';
+import { useMyContext } from './contexts/Context';
 import CreateNoteButton from './components/CreateNoteButton';
+import { Check } from 'react-feather';
+
+
 // add this line back into the nav-container class for animation: ${isNavVisible ? 'show' : 'hide'}
 
 
@@ -15,10 +18,14 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function App() {
   const [isNavVisible, setIsNavVisible] = useState(true);
+  const { fileUploaded } = useMyContext();
+
+
+
   return (
-    <Context> 
       <Router>
-        <div className={`nav-container`} style={{padding: "20px", display: isNavVisible ? 'flex' : 'none'}}>
+          {fileUploaded && <div className="notification-popup"><Check size={"16px"}/>your files are uploaded and searchable</div>}
+          <div className={`nav-container`} style={{padding: "20px", display: isNavVisible ? 'flex' : 'none'}}>
           <img src="/logo.svg" alt="Logo" style={{ marginRight: "auto", width: "200px" }} onClick={() => window.location.href = "https://www.shadownotes.ai/"} />
           <CreateNoteButton/>
           <UploadButton/>
@@ -44,7 +51,6 @@ function App() {
           </div>
         </div>
       </Router>
-    </Context>
   );
 }
 

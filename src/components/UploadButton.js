@@ -2,9 +2,12 @@ import React from 'react';
 import { callUploadEndpoint, callConvertEndpoint } from '../api';
 import './UploadButton.css'; 
 import { FilePlus } from 'react-feather';
+import { useMyContext } from '../contexts/Context'; // Adjust the path as necessary
 
 
 function UploadButton() {
+  const { updateFileUploaded } = useMyContext();
+
   //const handleUpload = async (event) => {
   async function handleUpload(event) {
     event.preventDefault();
@@ -29,6 +32,7 @@ function UploadButton() {
         console.log("\n\n\n Converting...\n\n\n")
         const convertResponse = await callConvertEndpoint(uploadResponse.data.file_path);
         console.log(convertResponse.data);
+        updateFileUploaded();
       } catch (error) {
         console.error(error);
       }

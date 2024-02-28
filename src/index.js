@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ContextProvider } from './contexts/Context'; // Import ContextProvider
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ContextProvider> {/* Wrap App with ContextProvider */}
+      <App />
+    </ContextProvider>
   </React.StrictMode>
 );
 

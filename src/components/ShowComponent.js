@@ -162,8 +162,10 @@ function ShowComponent() {
         </div>
         {!rawData && (
             <div className="no-data-card">
-                <h1> 🌚 Let's get started with Shadow notes</h1>
-                <p style={{paddinTop: "20px"}}><b>This is just a demo and some actions will take a while, so hang tight. Image and PDF uploads can take beween 10 seconds to a minute depending on how many pages are in the PDF.</b></p>
+                {/* <h1> 🌚 Let's get started with Shadow notes</h1> */}
+                <h1> 🚧 The back-end is shut down right now</h1>
+                {/* <p style={{paddinTop: "20px"}}><b>This is just a demo and some actions will take a while, so hang tight. Image and PDF uploads can take beween 10 seconds to a minute depending on how many pages are in the PDF.</b></p> */}
+                <p style={{paddinTop: "20px"}}><b>This is just a demo and is still being built. Check-in again later - this notice will be up to date ❤️.</b></p>
                 <ol className="get-started-list">
                   <li>Move your cursor to the top of the screen to view your tools. You can create a quick note, import images or PDFs, or connect files from sources like Notion or Dropbox. Any handwriting from uploaded documents can be found in the Annotations tab and all text is searchable.</li>
                   <li>Search for Files or annotations using the toggle. In file mode, you can enter annotation text into the search bar to pull up the file it's associated with (Try typing "happy valentines day" to start).</li>

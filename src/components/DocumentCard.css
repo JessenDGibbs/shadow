@@ -47,8 +47,16 @@
 @media (max-width: 768px) {
 
   .pdf-container {
-    overflow-x: auto;
+    width: 100%; /* Full width of the card */
+    display: flex;
+    justify-content: start !important; /* Center the PDF horizontally */
+    align-items: start; /* Align the PDF vertically */
+    overflow-x: auto !important; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Prevent vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
+    touch-action: pan-x; /* Allow horizontal pan */
   }
+  
   .documents-grid .document-card {
     flex: 1 0 100%; /* Full width on smaller screens */
     max-height: 250px; /* Adjusted max-height for smaller screens */

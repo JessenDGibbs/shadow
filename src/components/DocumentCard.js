@@ -150,7 +150,7 @@ function DocumentCard({ document, metadata, id }) {
             {showDocumentData ? 'Hide LLM interpretation' : 'Show LLM interpretation'}
           </button>
           {showDocumentData && <ReactMarkdown className="document-content">{document}</ReactMarkdown>}
-          <div className="pdf-container">
+          <div className="pdf-container" name="viewport" content="width=device-width, initial-scale=1">
             <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
               {renderPages()}
             </Document>

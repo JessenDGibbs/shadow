@@ -45,6 +45,10 @@
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+
+  .pdf-container {
+    overflow-x: auto;
+  }
   .documents-grid .document-card {
     flex: 1 0 100%; /* Full width on smaller screens */
     max-height: 250px; /* Adjusted max-height for smaller screens */

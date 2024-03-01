@@ -48,12 +48,12 @@ function App() {
   return (
       <Router>
           {fileUploaded && <div className="notification-popup"><Check size={"16px"}/>your files are uploaded and searchable</div>}
-          <div className={`nav-container`} style={{padding: "20px", display: isNavVisible ? 'flex' : 'none', marginLeft: isMobile ? '0px' : '40px', marginRight: isMobile ? '0px' : '40px'}}>
+          <div className={`nav-container`} style={{padding: isMobile ? '10px' : '20px', paddingBottom: isMobile ? '0px' : '20px', display: isMobile ? 'flex' : (isNavVisible ? 'flex' : 'none'), marginLeft: isMobile ? '0px' : '40px', marginRight: isMobile ? '0px' : '40px'}}>
           <img src="/logo.svg" alt="Logo" style={{ marginRight: "auto", width: "200px" }} onClick={() => window.location.href = "https://www.shadownotes.ai/"} />
           {isMobile ? <BurgerMenu>{navContent}</BurgerMenu> : navContent}
           </div>
         <div className="app-container" 
-          style={{ marginTop: isNavVisible ? '10px' : '40px', marginLeft: isMobile ? '0px' : '40px', marginRight: isMobile ? '0px' : '40px'}}
+          style={{ marginTop: isMobile ? '10px' : (isNavVisible ? '10px' : '40px'), marginLeft: isMobile ? '0px' : '40px', marginRight: isMobile ? '0px' : '40px'}}
            onMouseEnter={() => setIsNavVisible(false)} 
            onMouseLeave={() => setIsNavVisible(true)}
         >

@@ -58,7 +58,15 @@ function CalendarModal() {
     // ];
   
     const findItemsForDate = (date) => {
-      return items.filter(item => new Date(item.date).toDateString() === date.toDateString());
+        return items.filter(item => {
+            // Extract the year, month, and day from item.date assuming it's in 'YYYY-MM-DD' format
+            const [year, month, day] = item.date.split('-').map(num => parseInt(num, 10));
+            // Construct a new Date object using the local time zone
+            // Note: JavaScript months are 0-indexed, so subtract 1 from the month
+            const itemDate = new Date(year, month - 1, day);
+            // Compare dates without considering time
+            return itemDate.toDateString() === date.toDateString();
+          });
     };
   
     const renderTileContent = ({ date, view }) => {

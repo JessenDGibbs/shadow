@@ -2,10 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: stretch; /* Ensure children fill the width */
-    padding: 20px;
-    padding-top: 0px;
-    padding-left: 0px;
-    margin-right: 10px;
     margin-bottom: 20px;
     max-width: 800px; /* Optimal reading width */
     background-color: transparent;
@@ -151,6 +147,10 @@
       font-size: 90%;
       max-height: 300px;
   }
+
+  .view-toggle {
+    visibility: hidden;
+  }
 }
 
 .view-toggle {
@@ -210,10 +210,6 @@
   border-radius: 2px; /* Optional: Rounded corners */
 }
 
-.document-type-pill:hover {
-  background-color: #353935;
-  color: #f1efe4; /* White text */
 
-}
 
   

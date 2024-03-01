@@ -1,0 +1,26 @@
+.tooltip {
+    position: absolute;
+    background-color: #fcfbf2;
+    border: 1px solid rgb(186, 177, 177);
+    color: #333;
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    z-index: 1000;
+    white-space: nowrap;
+    /* Adjust the position as needed */
+    transform: translateX(-50%);
+    transform: translateY(-15%);
+    /* Hide the tooltip by default */
+    display: none;
+    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-width: 300px;
+  }
+  
+  .calendar-item-card:hover .tooltip {
+    display: block;
+
+  }

@@ -1,0 +1,101 @@
+.calendar-tile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .calendar-item-card {
+    margin: 2px;
+    padding: 10px;
+    background-color: #efede0;
+    border: 1px solid #e1dfce;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #333;
+    width: 100%;
+    text-align: left;
+  }
+
+  .react-calendar {
+    font-family: "Quicksand", sans-serif;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    min-height: 600px;
+  }
+
+  .react-calendar__viewContainer .react-calendar__month-view .react-calendar__month-view__days {
+    min-height: 600px;
+  }
+
+  .react-calendar__tile--now {
+    border: 1px solid #333 !important;
+    border-radius: 4px;
+    background: transparent !important;
+  }
+
+  .react-calendar__tile--active {
+    background: transparent !important;
+    color: #333 !important;
+}
+
+  .react-calendar__tile .react-calendar__month-view__days__day .react-calendar__month-view__days__day--neighboringMonth{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .react-calendar__tile.react-calendar__month-view__days__day:hover {
+    background-color: transparent;
+  }
+
+  .calendar-modal-container .modal-content {
+    max-width: 900px;
+    min-height: 600px;
+  }
+
+  .open-modal-button {
+    padding: 10px 25px;
+    background-color: transparent;
+    color: #282828;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: monospace;
+    /*box-shadow: 0 8px 16px rgba(0,0,0,0.2);*/
+    border-radius: 8px;
+    border: 2px solid #efeee5;
+    margin-right: 20px;
+    gap:10px;
+  }
+
+  .open-modal-button:hover {
+    background-color: #f1efe4;
+  }
+
+  .header-container {
+    display: flex; /* This turns the container into a flex container */
+    align-items: center; /* This vertically centers the items in the container */
+    justify-content: left; /* This spreads the items to fill the container */
+}
+
+.header-container h3 {
+    margin: 0; /* Removes default margin from h3 to align it properly with the button */
+    padding: 0; /* Adjust padding as needed */
+}
+
+@keyframes spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+    
+  }
+  
+  .spin-animation {
+    animation: spin-reverse 0.5s linear infinite;
+  }
+

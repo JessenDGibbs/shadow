@@ -54,7 +54,7 @@
     overflow-x: auto !important; /* Enable horizontal scrolling */
     overflow-y: hidden; /* Prevent vertical scrolling */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
-    touch-action: pan-x; /* Allow horizontal pan */
+    touch-action: pan-x pan-y; /* Allow horizontal pan */
   }
   
   .documents-grid .document-card {

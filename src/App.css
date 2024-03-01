@@ -121,6 +121,7 @@ body, html {
   .column {
     width: 100%;
     max-width: none;
+    overflow-x: hidden;
   }
 }
 

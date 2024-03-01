@@ -49,6 +49,10 @@
     flex: 1 0 100%; /* Full width on smaller screens */
     max-height: 250px; /* Adjusted max-height for smaller screens */
   }
+
+  .document-modal {
+    margin-top: 50px !important;
+  }
 }
 
 

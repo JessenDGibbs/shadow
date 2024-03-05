@@ -108,7 +108,7 @@ function DocumentCard({ document, metadata, id }) {
         case 'annotation':
             return 'metadata-type-citation';
         default:
-            return ''; // Default case if none match
+            return 'metadata-type-else'; // Default case if none match
     }
 };
  

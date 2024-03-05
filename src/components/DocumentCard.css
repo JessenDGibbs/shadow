@@ -176,6 +176,11 @@
   border: 1px solid #1c1d1c;
 }
 
+.metadata-type-else {
+  background-color: #353935; /* Green */
+  border: 1px solid #1c1d1c;
+}
+
 .metadata-type {
   display: flex; /* Use flexbox to align children */
   align-items: center; /* Align items vertically at their center */

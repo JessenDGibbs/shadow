@@ -1,0 +1,123 @@
+.assistant-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: #282828;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .assistant-button {
+    padding: 10px 25px;
+    background-color: transparent;
+    color: #282828;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 2px solid #efeee5;
+  }
+
+  .assistant-content {
+    margin-top: 20px;
+    overflow-y: auto;
+    flex: 1 1;
+    padding: 15px;
+    max-width: 100%;
+    max-height: 600px;
+  }
+
+  .assistant-button:hover {
+    background-color: #f1efe4;
+    border: 2px solid rgb(224, 223, 210);
+  }
+  
+  .research-button {
+    padding: 10px 25px;
+    background-color: transparent;
+    color: #282828;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    border: 2px solid #efeee5;
+  }
+  
+  .research-button:hover {
+    background-color: #f1efe4;
+    border: 2px solid rgb(224, 223, 210);
+  }
+  
+  .assistant-container .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .assistant-container .modal-content {
+    max-height: 800px !important;
+  }
+  
+  /* Input and textarea styles */
+  .assistant-container input, textarea {
+    width: calc(100% - 16px);
+    padding: 12px; /* Increased padding */
+    margin-top: 10px;
+    box-sizing: border-box;
+    background-color: transparent; /* Slight background color */
+    border: 1px solid #dcdbd2;
+    border-radius: 6px;
+    color: #282828;
+    font-family: monospace;
+  }
+  
+  textarea {
+    height: 100px; /* Adjust height as needed */
+  }
+  
+  /* Label styles */
+  .assistant-container label {
+    display: flex;
+    margin-top: 20px;
+    color: #282828;
+  }
+
+  @media (max-width: 768px) {
+    .assistant-container label {
+        display: flex;
+        margin-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #282828;
+      }
+
+      .assistant-container h2 {
+        padding-left: 10px;
+      }
+
+      /* Input and textarea styles */
+  .assistant-container input, textarea {
+    width: calc(100% - 16px);
+    margin-top: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid #dcdbd2;
+    color: #282828;
+    font-family: monospace;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .research-button {
+    padding: 10px 25px;
+    background-color: transparent;
+    color: #282828;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    border: 2px solid #efeee5;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+}

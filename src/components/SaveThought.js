@@ -17,7 +17,7 @@ function SaveThought() {
     console.log("logging input:\n\n")
     console.log(input)
 
-    sendToBackend(input)
+    sendToBackend(input, "text")
       .then(response => {
         console.log(response.data);
         setIsSaved(true); // Set isSaved to true upon successful save

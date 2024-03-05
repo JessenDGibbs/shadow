@@ -9,7 +9,7 @@ export const callAssistant = (query) => {
     const data = {
         query: query
     }
-    return axios({method: 'POST', url: `http://127.0.0.1:8080/assistant`, data: data});
+    return axios({method: 'POST', url: `https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/assistant`, data: data});
 };
 
 // to embed a new typed thought
@@ -18,12 +18,12 @@ export const sendToBackend = (input, type) => {
         input: input,
         type: type
     }
-  return axios({method: 'POST', url: `http://127.0.0.1:8080/echo`, data: data});
+  return axios({method: 'POST', url: `https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/echo`, data: data});
 };
 
 // get calendar content
 export const getCalContent = () => {
-    return axios.get(`http://127.0.0.1:8080/calendarContent`);
+    return axios.get(`https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/calendarContent`);
   };
 
 // to delete chroma entry
@@ -32,7 +32,7 @@ export const sendToDelete = (id) => {
         id: id
     }
     console.log("\n\n\ndeleting:", data, "\n\n\n")
-    return axios({method: 'POST', url: `http://127.0.0.1:8080/delete`, data: data});
+    return axios({method: 'POST', url: `https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/delete`, data: data});
   };
 
 // to retrieve existing thought
@@ -41,7 +41,7 @@ export const callShowEndpoint = (input, searchMode) => {
         searchMode: searchMode,
         input: input
     }
-    return axios({method: 'POST', url: `http://127.0.0.1:8080/show`, data: data});
+    return axios({method: 'POST', url: `https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/show`, data: data});
 };
 
 // to upload a pdf file and save it
@@ -59,7 +59,7 @@ return axios.post(`https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-fre
 //get file from Docker
 export const getFile = (filePath) => {
     console.log("getting file", filePath)
-    return axios.get(`http://127.0.0.1:8080/getFile?file_path=${filePath}`);
+    return axios.get(`https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/getFile?file_path=${filePath}`);
 };
 // to convert the ave pdf to an image file
 export const callConvertEndpoint = (filePath) => {
@@ -73,7 +73,7 @@ export const callReset = () => {
 
 // get notion page
 export const callNotion = (page) => {
-    return axios.get(`http://127.0.0.1:8080/notion?page_id=${page}`);
+    return axios.get(`https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/notion?page_id=${page}`);
 };
 
 // list dropbox files

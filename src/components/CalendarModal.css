@@ -99,3 +99,8 @@
     animation: spin-reverse 0.5s linear infinite;
   }
 
+  .react-calendar {
+    max-height: 700px;
+    overflow-y: auto;
+  }
+

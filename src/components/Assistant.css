@@ -50,7 +50,7 @@
   .assistant-container .buttons-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .assistant-container .modal-content {
@@ -79,6 +79,20 @@
     display: flex;
     margin-top: 20px;
     color: #282828;
+  }
+
+  .paths-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates a 2-column grid */
+    gap: 10px; /* Adjust the gap between grid items */
+    margin-top: 20px; /* Space above the grid */
+  }
+  
+  .path-card {
+    border: 1px solid #ccc; /* Simple border for the card */
+    padding: 10px; /* Padding inside the card */
+    border-radius: 5px; /* Optional: rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: simple shadow */
   }
 
   @media (max-width: 768px) {

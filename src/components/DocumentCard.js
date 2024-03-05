@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs } from 'react-pdf';
 import './DocumentCard.css'; // Import the CSS file for styling
 import ReactMarkdown from 'react-markdown';
 import { X, Calendar, Trash } from 'react-feather';
 import { sendToDelete } from '../api';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+
+// You need to set workerSrc to point to the PDF.js worker script.
+// This is required for the library to work.
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 
 
 function DocumentCard({ document, metadata, id }) {
@@ -21,7 +27,7 @@ function DocumentCard({ document, metadata, id }) {
     const loadFile = async (attempt = 1) => {
       if (metadata.path) {
         try {
-          const response = await fetch(`https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`http://127.0.0.1:8080/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -44,7 +50,7 @@ function DocumentCard({ document, metadata, id }) {
     const loadImage = async (attempt = 1) => {
       if (metadata.path) {
         try {
-          const response = await fetch(`https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`http://127.0.0.1:8080/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);

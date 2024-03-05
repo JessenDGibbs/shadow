@@ -8,15 +8,18 @@ import SimpleMDE from 'react-simplemde-editor';
 
 
 
-
 function Assistant() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showSources, setSources] = useState(false);
   const [isResearchDone, setIsResearchDone] = useState(false);
   const [isEditing, setIsEditing] = useState(false); // Track if the user is editing
   const [responseData, setResponseData] = useState('');
+  const [paths, setPaths] = useState([]);
+  const [showPathsTooltip, setShowPathsTooltip] = useState(false); // State to toggle tooltip visibility
   const [input, setInput] = useState(''); // State for SimpleMDE inputs
   const workRef = useRef(null);
   const sampleRef = useRef(null);
+
 
   const handleResearch = async () => {
     const work = workRef.current.value;
@@ -25,7 +28,8 @@ function Assistant() {
     // For demonstration, let's assume the API is called `callResearchAPI`
     try {
       const response = await callAssistant(work);
-      setResponseData(response.data);
+      setResponseData(response.data.assistant_response);
+      setPaths(response.data.paths); // Save the paths list to the state
       setIsResearchDone(true);
     } catch (error) {
       console.error(error);
@@ -55,6 +59,10 @@ function Assistant() {
     setIsResearchDone(false);
   };
 
+  const handleSources = () => {
+    setSources(!showSources);
+  };
+
   return (
     <div className='assistant-container'>
       <button className="assistant-button" onClick={() => setIsModalOpen(true)}><Coffee size={20}/></button>
@@ -71,16 +79,22 @@ function Assistant() {
             </>
           ) : (
             <div>
+              <button onClick={handleSources} className="assistant-button" style={{display: isEditing ? 'none' : 'block', border: "none"}}>Sources</button>
+              <div className="paths-grid" style={{display: showSources ? 'grid' : 'none'}}>
+                {paths.map((path, index) => (
+                  <div key={index} className="path-card">{path}</div>
+                ))}
+              </div>
+              {isEditing ? (
+                <SimpleMDE className="assistant-content" value={input} placeholder="Connect things and tell stories..." onChange={value => setInput(value)} />
+              ) : (
+                <ReactMarkdown className="assistant-content" >{responseData}</ReactMarkdown>
+              )}
               <div className='buttons-container'>
                 <button onClick={handleBack} className="assistant-button" style={{display: isEditing ? 'none' : 'block'}}>Back</button>
                 <button onClick={handleEdit} className="assistant-button">{isEditing ? 'Save Changes' : 'Edit'}</button>
                 <button onClick={handleSave} className="assistant-button" style={{display: isEditing ? 'none' : 'block'}}>Save</button>
               </div>
-              {isEditing ? (
-                <SimpleMDE className="assistant-content" value={input} placeholder="Connect things and tell stories..." onChange={value => setInput(value)} />
-              ) : (
-                <ReactMarkdown className="assistant-content">{responseData}</ReactMarkdown>
-              )}
             </div>
           )}
         </Modal>

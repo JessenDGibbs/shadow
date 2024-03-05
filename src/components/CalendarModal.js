@@ -24,7 +24,7 @@ function CalendarModal() {
 
         const attemptFetch = async () => {
             try {
-                const response = await fetch('https://a254-2001-569-7dbb-ca00-1d52-7d74-a0f7-bbbf.ngrok-free.app/calendarContent');
+                const response = await fetch('http://127.0.0.1:8080/calendarContent');
                 if (!response.ok) {
                     throw new Error(`Server responded with status ${response.status}`);
                 }
@@ -48,9 +48,9 @@ function CalendarModal() {
     };
 
     // useEffect to load data when the component mounts
-    React.useEffect(() => {
-        fetchItems();
-    }, []); 
+    // React.useEffect(() => {
+    //     fetchItems();
+    // }, []); 
   
     // const items = [
     //   { id: 1, title: 'Note', date: '2024-02-27', meta: "Playing with a calendar view of exploring content creation and actions" },

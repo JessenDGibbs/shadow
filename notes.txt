@@ -47,3 +47,56 @@ Create the container:
 docker run -d -p 5001:5000 --name shadow-container -v shadow-volume:/app/public shadow
 
 
+DN records for website:
+75.2.70.75
+
+
+/collect:
+
+# Utility function to convert images to PDF
+def image_to_pdf(image_path):
+    image = Image.open(image_path)
+    pdf_bytes = io.BytesIO()
+    image.save(pdf_bytes, format="PDF")
+    pdf_bytes.seek(0)
+    return pdf_bytes
+
+# Utility function to merge PDFs
+def merge_pdfs(pdfs):
+    merged_pdf = fitz.open()
+    for pdf in pdfs:
+        merged_pdf.insert_pdf(fitz.open(stream=pdf, filetype="pdf"))
+    output = io.BytesIO()
+    merged_pdf.save(output)
+    output.seek(0)
+    return output
+
+@app.route('/collect', methods=['POST'])
+def collect_files():
+    if 'files' not in request.files:
+        return "No files part in the request", 400
+
+    files = request.files.getlist('files')
+    temp_files = []  # To keep track of temporary files
+    pdf_streams = []
+
+    for file in files:
+        if file.filename.endswith(('.jpg', '.jpeg', '.png')):
+            # Convert image to PDF and add to the list
+            pdf_stream = image_to_pdf(file)
+            pdf_streams.append(pdf_stream)
+        elif file.filename.endswith('.pdf'):
+            # Directly add PDF stream to the list
+            pdf_streams.append(file.stream)
+        else:
+            return "Unsupported file type", 400
+
+    # Merge all PDF streams into a single PDF
+    merged_pdf_stream = merge_pdfs(pdf_streams)
+
+    # Cleanup any temporary files
+    for temp_file in temp_files:
+        os.remove(temp_file)
+
+    # Return the merged PDF
+    return send_file(merged_pdf_stream, attachment_filename="merged.pdf", as_attachment=True)

@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { X, Calendar, Trash } from 'react-feather';
 import { sendToDelete } from '../api';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import ErrorBoundary from './ErrorBoundary';
 
 // You need to set workerSrc to point to the PDF.js worker script.
 // This is required for the library to work.
@@ -20,6 +21,8 @@ function DocumentCard({ document, metadata, id }) {
   const [pdfUrl, setPdfUrl] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [isVisible, setIsVisible] = useState(true); // Add this line
+  const [error, setError] = useState('');
+
 
 
   
@@ -27,7 +30,7 @@ function DocumentCard({ document, metadata, id }) {
     const loadFile = async (attempt = 1) => {
       if (metadata.path) {
         try {
-          const response = await fetch(`http://127.0.0.1:8080/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`https://7c00-2605-8d80-1120-814-fdb6-19f7-c2e0-1c74.ngrok-free.app/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -50,7 +53,7 @@ function DocumentCard({ document, metadata, id }) {
     const loadImage = async (attempt = 1) => {
       if (metadata.path) {
         try {
-          const response = await fetch(`http://127.0.0.1:8080/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`https://7c00-2605-8d80-1120-814-fdb6-19f7-c2e0-1c74.ngrok-free.app/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -132,8 +135,10 @@ function DocumentCard({ document, metadata, id }) {
     if (path.endsWith('.pdf')) {
       // For PDF files, use an <embed> or <object> tag
       return <div className="pdf-container">
-      <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
-        {renderPages()}
+      <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess} onLoadError={(error) => setError('Error loading PDF document.')}>
+        <ErrorBoundary>
+          {renderPages()}
+        </ErrorBoundary>
       </Document>
     </div>;
     } else if (path.match(/\.(jpeg|jpg|png)$/)) {
@@ -157,8 +162,10 @@ function DocumentCard({ document, metadata, id }) {
           </button>
           {showDocumentData && <ReactMarkdown className="document-content">{document}</ReactMarkdown>}
           <div className="pdf-container" name="viewport" content="width=device-width, initial-scale=1">
-            <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
-              {renderPages()}
+            <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess} onLoadError={(error) => setError('Error loading PDF document.')}>
+              <ErrorBoundary>
+               {renderPages()}
+              </ErrorBoundary>
             </Document>
           </div>
           <div className="metadata-container" >

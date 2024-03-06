@@ -12,6 +12,7 @@ import CalendarModal from './components/CalendarModal';
 import BurgerMenu from './components/BurgerMenu'; // Assuming you have a BurgerMenu component
 import { useMediaQuery } from 'react-responsive';
 import Assistant from './components/Assistant';
+import Login from './components/Login';
 
 
 
@@ -25,6 +26,28 @@ function App() {
   const [isNavVisible, setIsNavVisible] = useState(true);
   const { fileUploaded } = useMyContext();
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [user, setUser] = useState(null);
+
+  // const handleUserSubmit = (username) => {
+  //   // Prepare the data to be sent in the request
+  //   const userData = { username };
+
+  //   // Send the username to your Flask backend
+  //   fetch('http://localhost:8080/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(userData),
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data);
+  //     // Assuming the backend responds with a message, and you want to set the user
+  //     setUser({ username });
+  //   })
+  //   .catch(error => console.error('Error:', error));
+  // };
 
   const navContent = (
     <>

@@ -18,12 +18,19 @@
   }
 
   .assistant-content {
-    margin-top: 20px;
     overflow-y: auto;
     flex: 1 1;
     padding: 15px;
     max-width: 100%;
-    max-height: 600px;
+    max-height: 700px;
+    background-color: #edebde;
+    border-radius: 12px;
+    margin-top: 5px;
+  }
+
+  .assistant-content a {
+    color: #7f3f90;
+    text-decoration: underline; /* Optional: adds underline on hover */
   }
 
   .assistant-button:hover {
@@ -54,7 +61,10 @@
   }
 
   .assistant-container .modal-content {
-    max-height: 800px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    max-width: 700px;
   }
   
   /* Input and textarea styles */
@@ -83,16 +93,23 @@
 
   .paths-grid {
     display: grid;
+    padding: 10px;
+    border-radius: 12px;
     grid-template-columns: repeat(2, 1fr); /* Creates a 2-column grid */
     gap: 10px; /* Adjust the gap between grid items */
     margin-top: 20px; /* Space above the grid */
+    background-color: #edebde;
   }
   
   .path-card {
-    border: 1px solid #ccc; /* Simple border for the card */
-    padding: 10px; /* Padding inside the card */
+    border: 1px solid #151515; /* Simple border for the card */
+    padding: 5px; /* Padding inside the card */
+    padding-left: 10px;
     border-radius: 5px; /* Optional: rounded corners */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: simple shadow */
+    font-family: monospace;
+    background-color: #333;
+    color: #fcfbf2;
   }
 
   @media (max-width: 768px) {

@@ -24,7 +24,7 @@ function CalendarModal() {
 
         const attemptFetch = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8080/calendarContent');
+                const response = await fetch('https://7c00-2605-8d80-1120-814-fdb6-19f7-c2e0-1c74.ngrok-free.app/calendarContent');
                 if (!response.ok) {
                     throw new Error(`Server responded with status ${response.status}`);
                 }

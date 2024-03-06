@@ -79,7 +79,12 @@ function Assistant() {
             </>
           ) : (
             <div>
-              <button onClick={handleSources} className="assistant-button" style={{display: isEditing ? 'none' : 'block', border: "none"}}>Sources</button>
+              <div className='buttons-container'>
+                <button onClick={handleBack} className="assistant-button" style={{display: isEditing ? 'none' : 'block'}}>Back</button>
+                <button onClick={handleEdit} className="assistant-button">{isEditing ? 'Save Changes' : 'Edit'}</button>
+                <button onClick={handleSave} className="assistant-button" style={{display: isEditing ? 'none' : 'block'}}>Save</button>
+                <button onClick={handleSources} className="assistant-button" style={{display: isEditing ? 'none' : 'block', border: "none"}}>Sources</button>
+              </div>
               <div className="paths-grid" style={{display: showSources ? 'grid' : 'none'}}>
                 {paths.map((path, index) => (
                   <div key={index} className="path-card">{path}</div>
@@ -90,11 +95,6 @@ function Assistant() {
               ) : (
                 <ReactMarkdown className="assistant-content" >{responseData}</ReactMarkdown>
               )}
-              <div className='buttons-container'>
-                <button onClick={handleBack} className="assistant-button" style={{display: isEditing ? 'none' : 'block'}}>Back</button>
-                <button onClick={handleEdit} className="assistant-button">{isEditing ? 'Save Changes' : 'Edit'}</button>
-                <button onClick={handleSave} className="assistant-button" style={{display: isEditing ? 'none' : 'block'}}>Save</button>
-              </div>
             </div>
           )}
         </Modal>

@@ -12,7 +12,6 @@ import CalendarModal from './components/CalendarModal';
 import BurgerMenu from './components/BurgerMenu'; // Assuming you have a BurgerMenu component
 import { useMediaQuery } from 'react-responsive';
 import Assistant from './components/Assistant';
-import Login from './components/Login';
 
 
 

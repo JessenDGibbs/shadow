@@ -1,8 +1,8 @@
 # Shadow
 
-Personalized generative search models for every individual. Building the thought space and the cognition.
+Personalized generative search models for every individual. Building the thought space and the cognition. Connect your things, think your way, and tag-team tasks with your Shadow assistant.
 
-Shadow allows individuals to license their AI minds and enables every human to be paid for the unique way they aggregate, think about, and interact with information. To be paid for being you.
+Aggregate and think about the information you want in an integrated environment with a personal AI assistant you can send on quests to grab the information and complete tasks.
 
 
 ## Personal Internet

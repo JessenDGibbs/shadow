@@ -49,7 +49,11 @@ Cognitition is fully open-source as well an we invite developers to play with di
 
 ### How to Use
 
-After setting up the Shadow API, connect your desired information sources and start interacting with your personal agent. The API documentation will guide you through connecting apps and embedding information.
+Clone the repo and install the requirements
+
+```bash
+git clone https://github.com/JessenDGibbs/shadow.git
+```
 
 ### How to: API
 1. add a venv if needed

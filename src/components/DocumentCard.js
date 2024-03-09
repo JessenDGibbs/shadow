@@ -30,7 +30,7 @@ function DocumentCard({ document, metadata, id }) {
     const loadFile = async (attempt = 1) => {
       if (metadata.path) {
         try {
-          const response = await fetch(`https://7c00-2605-8d80-1120-814-fdb6-19f7-c2e0-1c74.ngrok-free.app/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`https://b496-2605-8d80-1120-814-3ceb-59e5-ff-fa43.ngrok-free.app/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -53,7 +53,7 @@ function DocumentCard({ document, metadata, id }) {
     const loadImage = async (attempt = 1) => {
       if (metadata.path) {
         try {
-          const response = await fetch(`https://7c00-2605-8d80-1120-814-fdb6-19f7-c2e0-1c74.ngrok-free.app/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`https://b496-2605-8d80-1120-814-3ceb-59e5-ff-fa43.ngrok-free.app/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);

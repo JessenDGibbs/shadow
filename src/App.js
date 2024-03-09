@@ -27,26 +27,27 @@ function App() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const [user, setUser] = useState(null);
 
-  // const handleUserSubmit = (username) => {
-  //   // Prepare the data to be sent in the request
-  //   const userData = { username };
-
-  //   // Send the username to your Flask backend
-  //   fetch('http://localhost:8080/login', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(userData),
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data);
-  //     // Assuming the backend responds with a message, and you want to set the user
-  //     setUser({ username });
-  //   })
-  //   .catch(error => console.error('Error:', error));
-  // };
+  const handleLoginSuccess = (username) => {
+    // Prepare the data to be sent in the request
+    const userData = { username };
+    console.log(userData)
+    // Send the username to your Flask backend
+    fetch('http://localhost:8080/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(userData),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // Assuming the backend responds with a message, and you want to set the user
+      setUser({ username });
+    })
+    .catch(error => console.error('Error:', error));
+  };
 
   const navContent = (
     <>

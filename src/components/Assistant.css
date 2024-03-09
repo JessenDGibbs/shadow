@@ -17,6 +17,18 @@
     border: 2px solid #efeee5;
   }
 
+  .collapse-type {
+    padding: 5px 10px;
+    background-color: transparent; /* Example pill background color */
+    color: #87877f;
+    border-radius: 2px; /* Gives the pill shape */
+    border: 1px solid #87877f;
+    text-align: center;
+    font-size: 0.875rem; /* Adjust as needed */
+    white-space: nowrap; /* Prevents the text inside the pill from wrapping */
+    cursor: pointer;
+  }
+
   .assistant-content {
     overflow-y: auto;
     flex: 1 1;

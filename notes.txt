@@ -1,38 +1,3 @@
-TODO:
-1. full scope Notion integration. Get all pages. 
-2. persistence with data storage -> use S3 for now.
-3. this really should be deployed on the web if we're going for persistence
-
-Feb 14 Notes:
-1. Nothing done with notion: i don't think it's the top priority 
-    right now and the api doesn't make things easy
-2. persistence is setup locally: using a persistenceclient provided from 
-    Chroma and writing to a local file. Eventually I'll want to migrate the entire
-    Chroma server tot he cloud to make things easy for but for now local is fine since 
-    nothing else is cloud-based (RIP)
-3. I know....: I should start to look at the individual pieces
-    Right now there is:
-    1) the python API that needs to be hosted
-    2) the react frontend that needs to be hosted
-    3) Chroma that needs to be hosted. Although they will eventually support persistent hosting.
-        For now running it on Docker or AWS is fine
-4. Got the Citaion store setup in it's own vector space:
-    1) first required a restructuring of the OpenAI response to use parsable JSON format
-        that has an attribute for writing and file content
-    2) then I take the list of written citations found and embed each of them with a link to 
-        the origional file
-    3) then I added a Citations tab in the show component that only searches for citations
-    4) I updated the Document card so that if the type is citation then it's clickable and
-        opens the source file for the citation
-5. I added an easter egg reset function that clears all of the data from the file, text,
-    and citations vector stores. Still requires a restart of the server since it needs to
-    reinitialize the chroma clients
-
-TODOS:
-1. citation entries are only made for Dropbox. need to add it to local file import as well
-2. when the chroma collections are deleted I need to delete the files in the chroma-store
-    folder as well to declutter
-
 
 Docker commands:
 
@@ -100,3 +65,37 @@ def collect_files():
 
     # Return the merged PDF
     return send_file(merged_pdf_stream, attachment_filename="merged.pdf", as_attachment=True)
+
+
+Updates for the Notion connection:
+Just set up a Shadow page in Notion, get the pageID upload it once and save in long-term storage. 
+If the value is not null don't present the add Id option and just show a sync button to pull all the
+content from that page. Check if a pageID is present in Chroma, if not add it, if yes update the current
+record with the current versino in case there have been updates
+
+Do the same for Dropbox
+
+
+An open-source API building personal internets and training detatchable agents that mimic your cognition. 
+Personal internets and agents can be published to a marketplace to be licesned by anyone for a small fee.
+Any personal agent can be attached to any internet to crawl it the way you would.
+
+I believe in the value of the thought process, not just the thought itself. Although a research paper
+delivers the key value that most are interested in, the process behind it carries untold value that
+is often lost once the paper is out. Monetizing processeses has not been done and I believe both creators
+and consumers will benefit from it greatly. The amount of thouhgt that wen't into building this app has
+led me to deliver what it is now, any only to deliver the app since that is my core goal. However, the 
+information I have aggregated through this process carries enourmous value for anyone who wants to:
+build a react app, understand different API architectures, deploy a python app on Docker, migrate
+Docker to GCP, build custom React components, use ngrok to test local api's on the web, etc. The internet
+behind this app alone could benefit many and I pains me to know that others will have to go through
+this same process over and over again because no one will take the time, rightfully, to think about how
+to track and make sense of everything they go through so that it can bring value beyond their core goal.
+The two main problems are 1) when we have a goal we only care about that goal and everything else is
+irrelevant along the way. 2) even if I were to collect everything and tell you about it it would be
+impossible for you to navigate and it would only be told through my perspective.
+
+Solutions:
+1) don't curate, just outline.
+2) Build detatched cognitations that can be personalized and help you crawl my information in your way.
+

@@ -73,6 +73,15 @@ function Assistant() {
             <>
               <label>What can I support you with?</label>
               <input type="text" ref={workRef} />
+              <label>Where should I pull from?</label>
+              <div className="button-group">
+                <button  className="collapse-type">Everything</button>
+                <button  className="collapse-type">Files</button>
+                <button  className="collapse-type">Notes</button>
+                <button  className="collapse-type">Notion</button>
+                <button  className="collapse-type">Dropbox</button>
+                <button  className="collapse-type" style={{fontFamily: 'Comic Sans MS'}}>Annotations</button>
+              </div>
               <label>Optional writing sample (this will help me write in a style more familiar to you)</label>
               <textarea ref={sampleRef}></textarea>
               <button onClick={handleResearch} className="research-button">Research</button>

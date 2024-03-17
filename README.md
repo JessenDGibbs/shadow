@@ -8,7 +8,7 @@ In the course of working towards a goal, we often generate and explore a lot of 
 
 ![git internet diagram](public/git_internet.png)
 
-By integrating with the tools and services you already use, like Notion, Dropbox, reMarkable, and more, Shadow orchestrates the internet behind the scenes while you focus on finding, collecting, and understanding the information you need to accomplish your goal. All information loaded into Shadow, is navigated with the AI assistant that helps you search, and utilize the knowledge to accomplish your goal. Shadow intentionally offers minimal navigation beyond the assistant to avoid the distracting of inforation tending and uses a tag-based system to organize your internets. You can also share your internets with others or list them on the Shadow marketplace.
+By integrating with the tools and services you already use, like Notion, Dropbox, reMarkable, and more, Shadow orchestrates the internet behind the scenes while you focus on finding, collecting, and understanding the information you need to accomplish your goal. All information loaded into Shadow is navigated with the AI assistant that helps you search and use the knowledge to accomplish your goal. Shadow intentionally offers minimal navigation beyond the assistant to avoid the distraction of information tending and uses a tag-based system to organize your internets. You can also share your internets with others or list them on the Shadow marketplace.
 
 ## Getting Started
 

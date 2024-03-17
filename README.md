@@ -1,7 +1,7 @@
 ![git header image](public/git_header_image.png)
 
 # Shadow
-Shadow is an open-source API for developing personal internets that can be shared, licensed, and navigated with an AI assistant. With Shadow, you can turn scattered information trails into meaningful knowledge networks for accomplishing any goal.
+Shadow is an open-source API for developing personal internets that can be shared, licensed, and navigated with an AI assistant. With Shadow, you can turn scattered information trails into meaningful knowledge networks that tell the story of your current project and help you accomplish more.
 
 ## Introduction
 In the course of working towards a goal, we often generate and explore a lot of information - notes, web pages, documents, code snippets, images, and more. This information trail is valuable, but is usually scattered across many different apps and services. Shadow provides a way to aggregate everything you read, write, explore and create related to a goal into a unified space - your \"personal internet\".
@@ -51,9 +51,6 @@ Shadow exposes the following key API endpoints:
 Full API documentation will bee posted soon, please keep an eye on [Shadow API Docs](https://shadownotes.ai/docs).
 
 
-![git system diagram](public/git_diagram.png)
-
-
 ## Contributing
 We welcome contributions to Shadow! Some key areas where we'd love community involvement:
 - Building new integration plugins for popular tools and services: Bump Perplexity, Github, Slack
@@ -61,4 +58,6 @@ We welcome contributions to Shadow! Some key areas where we'd love community inv
 - Improving PDF parsing and annotation extraction
 - Build an app
 
+
+![git system diagram](public/git_diagram.png)
 

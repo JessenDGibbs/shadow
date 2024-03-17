@@ -1,0 +1,9 @@
+Flask
+flask-cors
+PyMuPDF
+requests
+openai
+chromadb
+gunicorn
+notion_client
+dropbox

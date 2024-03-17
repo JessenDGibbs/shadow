@@ -1,80 +1,63 @@
+![git header image](public/git_header_image.png)
+
 # Shadow
+Shadow is an open-source API for developing personal internets that can be shared, licensed, and navigated with an AI assistant. With Shadow, you can turn scattered information trails into meaningful knowledge networks for accomplishing any goal.
 
-Personalized generative search models for every individual. Building the thought space and the cognition. Connect your things, think your way, and tag-team tasks with your Shadow assistant.
+## Introduction
+In the course of working towards a goal, we often generate and explore a lot of information - notes, web pages, documents, code snippets, images, and more. This information trail is valuable, but is usually scattered across many different apps and services. Shadow provides a way to aggregate everything you read, write, explore and create related to a goal into a unified space - your \"personal internet\".
 
-Aggregate and think about the information you want in an integrated environment with a personal AI assistant you can send on quests to grab the information and complete tasks.
+![git internet diagram](public/git_internet.png)
 
-
-## Personal Internet
-Shadow's engine is an open-source API connecting silos from the internet into a unified space, and embedding it into a singular, unified thought space - for you and your Shadow (AI Assistant). The default Shadow (AI Assistant) is offered by calling the /shadow route and has access to the same digital thought space as you. As you add new information the Shadow learns and becomes more like you: how it thinks, what it knows, and how it acts.
-
-The personal internet i designed to support both digital and physical information so you can connect digital sources as well as physical handwriting, momentary images, and other objects from the real world. Being on the edge of digtial and physical is necesarry for a tool building a digital extension of a phyical human mind.
-
-The API is fully open-source and relies on plugins to reach different silos and we rely on community to help build as many as we can.
-
-## Cognition
-Cognition is the Shadow (AI Assistant) that lives on the /shadow route. Shadow's cognition relies on a custom RAG pipeline, fine-tuned online models, and fine-tuned on-device/ off line models. Your Shadow can be with you anywhere you go.
-
-When you call the /shadow route your Shadow crawls the Thought Space while mimicing the patterns of thought it's pickup by the way you aggregate and interact with the information. Deploy your Shadow on questss to grab certain information ans complete tasks with it.
-
-The third element of congition is feedback and training. By default Shadow has a smart RLHF system built in. Whenever you deploy it on a quest and it returns with what it thinks you want it will observe the way to interact with it, editing, follow requests, and when you're finally happy with it, and use the observations to adjust it's behaviour for the next quest.
-
-Cognitition is fully open-source as well an we invite developers to play with different models, RAG systems, embedders, and learning mechanisms.
-
-## Key Features
-
-- **Personal Internet**: Connect applications such as Notion, Google Docs, Dropbox, and Figma, or upload files including annotated PDFs, text documents, and images for comprehensive access through your agent. Overtime the personal internet will grow to connect to every source of digtial and physical information.
-- **Shadow (Personal AI Assistant)**: Send your assisant out on research quests to grab the information you need and complete tasks. Adaptive and ultimiately an extension of your own mind.
-- **Custom RAG Pipeline**: Powered by a custom Retrieval-Augmented Generation (RAG) pipeline, your AI assistant pulls information from your Thought Space and learns to mimics the way you aggregate, percieve, and interact with information.
-- **Online & On-device**: Shadow lays the groundwork for an on-device, fully offline personal internet, prioritizing privacy while maintaining access anywhere you go. When network connection is available online models can be swapped in. Every user will own a set of fine-tuned off-line and on-line models that grow with them.
-- **Learning**: A smart RLHF system observes how users interact with infrormation produced by the AI assistant and adapts it's behaviour for it's next quests. Learning is also integrated into general app actions monitoring how you aggregate, interact with, and percieve information.
-- **Marketplace Integration**: Optionally list your Shadow and the associated Internet on the Shadow marketplace where users can purchase access through one-time or multi-use licenses. This allows users to get paid for the way they think.
+By integrating with the tools and services you already use, like Notion, Dropbox, reMarkable, and more, Shadow orchestrates the internet behind the scenes while you focus on finding, collecting, and understanding the information you need to accomplish your goal. All information loaded into Shadow, is navigated with the AI assistant that helps you search, and utilize the knowledge to accomplish your goal. Shadow intentionally offers minimal navigation beyond the assistant to avoid the distracting of inforation tending and uses a tag-based system to organize your internets. You can also share your internets with others or list them on the Shadow marketplace.
 
 ## Getting Started
 
-### Requirements
+1. Clone the Shadow repo and navigate into the directory
+2. Install the required Python packages: `pip install -r requirements.txt` 
+3. Install the front-end dependencies: `npm install`
+4. Start the back-end server: `python app.py`
+5. In a separate terminal, start the front-end: `npm start`
+6. Navigate to `http://localhost:3000` to use Shadow
 
+## Prerequisites
+To run Shadow, you'll need:
 - Python 3.9 or higher
-- Flask
+- The following Python packages: flask, chromaDB, notion_client, dropbox, openai, anthropic, fitz
 
-## Front-end requirements if you wish to use it
-1. npm
-2. React
+## Front-end
+The Shadow front-end is built with:
+- npm 
+- React
+- react-feather
+- axios
+- SimpleMDE
 
-### Installation
+To install the front-end dependencies, run `npm install`. To start the front-end dev server, run `npm start`.
 
-1. Clone the Shadow repository to your local machine.
-2. Navigate to the Shadow directory and install the required dependencies in requirements.txt
-3. Run the Shadow Flask app locally, or deploy it within a Docker container for enhanced portability and scalability.
+## Back-end
+The Shadow back-end is a Python Flask application. It uses ChromaDB as the vector database for storing and searching embeddings.
 
-### How to Use
 
-Clone the repo and install the requirements
+## API Reference
+Shadow exposes the following key API endpoints:
+- `POST /shadow/plugins/{plugin_name}` - Configure a new integration plugin
+- `GET /shadow/internets` - List your internets based on the tags you have creates
+- `POST /shadow/internets` - Create a new tag
+- `GET /shadow/internets/{internet_id}` - Get a specific internet
+- `POST /shadow/assistant` - Query the AI assistant. Takes in a query string and an optional search scope
+- `POST /shadow/files` - Upload a file for the assistant. Supports .pdf and all image files.
+- `POST /shadow/urls` - Have the assistant scrape text from a web page
 
-```bash
-git clone https://github.com/JessenDGibbs/shadow.git
-```
+Full API documentation will bee posted soon, please keep an eye on [Shadow API Docs](https://shadownotes.ai/docs).
 
-### How to: API
-1. add a venv if needed
-2. pip install requirements.txt
-4. create local directories for /public/user-content, /public/dropbox, /public/chroma-store. Alternatively adjust the routes found in app.py
-3. python app.py
+![git system diagram](public/git_diagram.png)
 
-### How to: Front-end
-1. npm install
-2. ensure the routes used in api.js, DocumentCard.js, and ActivityCalendar.js are set to the proper URLs
-2. npm start
 
 ## Contributing
+We welcome contributions to Shadow! Some key areas where we'd love community involvement:
+- Building new integration plugins for popular tools and services: Bump Perplexity, Github, Slack
+- Expanding the capabilities of the AI assistant
+- Improving PDF parsing and annotation extraction
+- Build an app
 
-We welcome contributions from developers interested in expanding the Shadow ecosystem. Whether it's building plugins for additional apps, enhancing the RAG pipeline, or refining the models and embedders, your input can help shape the future of personalized digital experiences.
 
-- **Build Plugins**: Extend the capabilities of Shadow by developing plugins for new applications.
-- **Enhance the RAG Pipeline**: Contribute improvements to the retrieval and generation processes.
-- **Model Improvements**: Help refine the underlying models to improve performance and accuracy.
-- **Else**: Build
-
-## Connect with Us
-
-- **GitHub**: Star and fork the Shadow repository to stay connected with the latest developments.

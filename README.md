@@ -50,6 +50,7 @@ Shadow exposes the following key API endpoints:
 
 Full API documentation will bee posted soon, please keep an eye on [Shadow API Docs](https://shadownotes.ai/docs).
 
+
 ![git system diagram](public/git_diagram.png)
 
 

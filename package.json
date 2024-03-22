@@ -11,6 +11,7 @@
     "axios": "^1.6.7",
     "chromadb": "^1.8.1",
     "codemirror": "^6.0.1",
+    "d3": "^7.9.0",
     "draft-js": "^0.11.7",
     "path-browserify": "^1.0.1",
     "react": "^18.2.0",

@@ -39,7 +39,7 @@
     right: 40px;
     padding: 10px 25px;
     background-color: transparent;
-    color: #343434;
+    color: #fcfbf2;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -48,12 +48,13 @@
     max-width: 200px;
     max-height: 50px;
     margin-bottom: 20px;
-    border: 1px solid #181818;
-
+    border: none;
   }
   
   .create-button:hover {
-    background-color: #f1efe4; /* Darker shade on hover */
+    background-color: #2f2f2f; /* Darker shade on hover */
+    border: none;
+
   }
   
   .markdown-preview {
@@ -63,7 +64,7 @@
     border: none;
     background-color: transparent; /* Light grey background for the preview */
     overflow-y: auto; /* In case of overflow */
-    color: #333;
+    color: #fcfbf2;
   }
 
   /*SimpleMDE styling*/
@@ -72,7 +73,7 @@
 .CodeMirror, .CodeMirror-scroll .CodeMirror-wrap {
   border: none !important; /* Removes border around the editor area */
   background-color: transparent !important; /* Dark background for the editor */
-  color: #333 !important;
+  color: #fcfbf2 !important;
   min-height: 800px;
 }
 
@@ -98,7 +99,7 @@
 .simplemde-container .editor-preview-active .editor-preview-full .editor-preview editor-preview-active,
 .simplemde-container .CodeMirror,
 .simplemde-container .CodeMirror-scroll {
-  color: #333; /* Light text color for contrast */
+  color: #fcfbf2; /* Light text color for contrast */
 }
 
 /* Adjusting the color for headings, links, etc., in preview mode */
@@ -109,12 +110,12 @@
 .simplemde-container .editor-preview h5,
 .simplemde-container .editor-preview h6,
 .simplemde-container .editor-preview a {
-  color: #333; /* Light text color for contrast */
+  color: #fcfbf2; /* Light text color for contrast */
 }
 
 .simplemde-container .editor-preview p,
 .simplemde-container .editor-preview li {
-  color: #333; /* Slightly dimmer text color for regular text */
+  color: #fcfbf2; /* Slightly dimmer text color for regular text */
 }
 
 .EasyMDEContainer {
@@ -128,6 +129,6 @@
   padding: 10px;
   background-color: #749e77; /* Green background */
   color: white;
-  border-radius: 0px;
+  border-radius: 12px;
   z-index: 1000; /* Ensure it's above other content */
 }

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { callShowEndpoint, callReset } from '../api';
 import DocumentCard from './DocumentCard';
 import './ShowComponent.css'; 
-import {Search, List, Grid } from 'react-feather';
+import {Search, List, Grid, Coffee, Calendar, Activity, Database, PlusSquare, FilePlus } from 'react-feather';
+import { useMyContext } from '../contexts/Context';
 
 
 function ShowComponent() {
@@ -15,6 +16,7 @@ function ShowComponent() {
   const [isFiltered, setIsFiltered] = useState(false); // Default to 'list'
   const [selectedType, setSelectedType] = useState(null); // New state for tracking the selected document type
 
+  const { graphData, setGraphData } = useMyContext();
 
   
   function filterDataByType(data, type) {
@@ -87,14 +89,20 @@ function ShowComponent() {
   const handleClick = () => {
     callShowEndpoint(input, searchMode)
       .then(response => {
-        console.log("\n\n\nraw:\n",response.data,"\n\n\n")
-
         setRawData(response.data)
+
         console.log("\n\n\nraw data:\n",rawData,"\n\n\n")
 
         const grouped = groupDocumentsByPath(response.data)
         console.log("\n\n\ngrouped:\n",grouped,"\n\n\n")
         setResponseData(grouped);
+
+        if (searchMode == 'concepts') {
+          setGraphData(grouped)
+          console.log("\n\n\ngraph:\n",JSON.stringify(graphData, null, 2),"\n\n\n")
+        }
+
+
         console.log(responseData)
       })
       .catch(error => {
@@ -132,6 +140,9 @@ function ShowComponent() {
         <div className="button-group">
           <button onClick={() => {setIsFiltered(false); setSearchMode('everything');}} className={searchMode === 'everything' ? 'active' : ''}>Files</button>
           <button onClick={() => {setIsFiltered(false); setSearchMode('citations');}} className={searchMode === 'citations' ? 'active' : ''} style={{fontFamily: 'Comic Sans MS'}}>Annotations</button>
+          <button onClick={() => {setIsFiltered(false); setSearchMode('concepts');}} className={searchMode === 'concepts' ? 'active' : ''}>Concepts</button>
+          <button onClick={() => {setIsFiltered(false); setSearchMode('shadow-notes');}} className={searchMode === 'shadow-notes' ? 'active' : ''}>Shadow notes</button>
+
         </div>
         <div className="input-group"> 
           <input 
@@ -161,16 +172,15 @@ function ShowComponent() {
         </div>
         {!rawData && (
             <div className="no-data-card">
-                <h1> 🌚 Let's get started with Shadow notes</h1>
+                <h1> 🌚 Let's get started with Shadow</h1>
                 <p style={{paddinTop: "20px"}}><b>This is just a demo and some actions will take a while, so hang tight. Image and PDF uploads can take beween 10 seconds to a minute depending on how many pages are in the PDF.</b></p>
                 <ol className="get-started-list">
-                  <li>Move your cursor to the top of the screen to view your tools. You can create a quick note, import images or PDFs, or connect files from sources like Notion or Dropbox. Any handwriting from uploaded documents can be found in the Annotations tab and all text is searchable.</li>
-                  <li>Click the coffee cup to access your assistant. Tell it what you want help doing or preparing and it'll search across everything to pull together what you need.</li>
-                  <li>Search for Files or annotations using the toggle. In file mode, you can enter annotation text into the search bar to pull up the file it's associated with (Try typing "anime" to start).</li>
+                  <li><Coffee size={20}/> Click the coffee cup to access your assistant. Tell it what you want help doing or preparing and it'll search across everything to pull together what you need.</li>
+                  <li><Search/> Search for Files or annotations using the toggle. In file mode, you can enter annotation text into the search bar to pull up the file it's associated with (Try typing "anime" to start).</li>
                   <li>Hit the search icon without entering any search terms to see everything</li>
                   <li>In File search, if you click on PDF pages, you can view the entire PDF.</li>
                   <li>In Annotation search, click on the annotation to pull up the relevant page.</li>
-                  <li>Checkout the activity calendar to find items by date and your recent activity</li>
+                  <li><Activity size={20}/>Checkout the activity calendar to find items by date and your recent activity</li>
                 </ol>
                 <p>Note: Unless you're Jessen, you won't be able to connect sources like Notion or Dropbox, but hopefully that'll be sorted out soon!</p>
     

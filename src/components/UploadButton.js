@@ -45,7 +45,7 @@ function UploadButton() {
     <div className="upload-container">
       <button  className="file-upload-label">
         <label htmlFor="file-upload">
-          <FilePlus size={20} />
+          <FilePlus size={20} className='icon'/>
         </label>
       </button>
       <input id="file-upload" type="file" accept="application/pdf,image/jpeg,image/png" onChange={handleUpload} className="file-upload-input" multiple/>

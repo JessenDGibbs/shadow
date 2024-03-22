@@ -1,8 +1,8 @@
 .document-card {
-  background-color: transparent;
-  color: #46453e;
+  background-color: #1e1e1e;
+  border: 0.5px solid #3c3c3c;
+  color: #f2f1e6;
   border-radius: 4px;
-  border: 2px solid #e6e5d9;
   overflow: auto;
   margin-top: 10px;
   margin-bottom: 30px;
@@ -88,7 +88,12 @@
 }
 
 .toggle-document-btn:hover {
-  background-color: #ebe9da;
+  background-color: #262626;
+}
+
+.document-content a {
+  color: #934da6;
+  text-decoration: none; /* Optional: adds underline on hover */
 }
 
 .document-content, .metadata-container {
@@ -208,7 +213,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fcfbf2;
+  background-color: transparent;
   padding: 40px;
   padding-top: 20px;
   border-radius: 5px;
@@ -216,7 +221,7 @@
   width: 100%;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   border-radius: 20px;
-  border: 2px solid #efeee5;
+  border: 0.5px solid #3c3c3c;
   min-height: 800px;
   max-height: auto;
   overflow-y: auto; /* Enable vertical scrolling */

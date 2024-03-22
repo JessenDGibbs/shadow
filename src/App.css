@@ -12,7 +12,7 @@ body, html {
   font-family: "Quicksand", sans-serif;
   letter-spacing: 0.2px;
   line-height: 1.3;
-  background-color: #fcfbf2; /* Soft off-white background */
+  background-color: #1a1a1a; /* Soft off-white background */
   overflow: hidden;
 }
 
@@ -26,21 +26,24 @@ body, html {
   gap: 20px;
   max-height: 96vh;
   min-height: 96vh;
-  margin: 40px;
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1); /* Inset shadow configuration */
+  margin: 0px;
+  margin-top: 0px;
+  /*box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);  Inset shadow configuration */
   border-radius: 12px 12px 0px 0px;
-  border: 1px solid #dad8cb;
-  background-color: #fcfbf2;
+  border: 0.5px solid #3c3c3c;
+  background-color: #1e1e1e;
   overflow: hidden; 
+  border-radius: 16px 16px 0px 0px;
 }
 
 .nav-container {
   display: flex;
   justify-content: right; /* Adjusts the space between components */
   align-items: center; /* Aligns items vertically in the center */
-  margin-right: 40px;
-  margin-left: 40px;
-  padding-left: 0px;
+  margin-right: 15px;
+  margin-left: 15px;
+  padding: 0px;
+  background: transparent; /* Gradient from #fcfbf2 to transparent */
   transition: opacity 0.5s ease, max-height 0.5s ease;
   opacity: 1;
   visibility: visible;
@@ -86,16 +89,22 @@ body, html {
 /* Simplified column styles */
 .column {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0px;
   width: 100%; /* Full width on smaller screens */
-  max-width: 800px; /* Max width for larger screens */
+  max-width: 100%; /* Max width for larger screens */
   padding: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+
   box-sizing: border-box;
   background-color: transparent; /* Pure white for content backgrounds */
   border-radius: 8px; /* Slight rounding of corners for a softer look */
   max-height: 95vh; /* Adjust based on your needs */
-  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-y: hidden; /* Enables vertical scrolling */
   border-radius: 20px;
 }
 
@@ -193,4 +202,19 @@ body, html {
   border-radius: 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   z-index: 2000;
+}
+
+.icon {
+   color: #fcfbf2;
+}
+
+.graph-toggle {
+  padding: 10px 15px;
+  background-color: #1e1e1e;
+  border: 0.5px solid #282828;
+  color: #282828;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  /*box-shadow: 0 8px 16px rgba(0,0,0,0.2);*/
+  border-radius: 8px;
 }

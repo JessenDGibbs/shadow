@@ -2,19 +2,20 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    color: #282828;
+    color: #fcfbf2;
     padding-left: 20px;
     padding-right: 20px;
   }
   
   .assistant-button {
-    padding: 10px 25px;
-    background-color: transparent;
-    color: #282828;
+    padding: 10px 15px;
+    background-color: #1e1e1e;
+    border: 0.5px solid #282828;    
+    color: #fcfbf2;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border: 2px solid #efeee5;
+
   }
 
   .collapse-type {
@@ -39,29 +40,31 @@
   }
 
   .assistant-content a {
-    color: #7f3f90;
+    color: #934da6;
     text-decoration: underline; /* Optional: adds underline on hover */
   }
 
   .assistant-button:hover {
-    background-color: #f1efe4;
-    border: 2px solid rgb(224, 223, 210);
+    background-color: #353535;
   }
   
   .research-button {
-    padding: 10px 25px;
-    background-color: transparent;
-    color: #282828;
+    padding: 15px 0px;
+    background-color: #2a2a2a60;
+    color: #fcfbf2;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 20px;
-    border: 2px solid #efeee5;
+    border: 0.5px solid #3c3c3c;
+    width: 50%;
+    font-family: "Quicksand", sans-serif;
+    letter-spacing: 0.2px;
+    line-height: 1.3;
   }
   
   .research-button:hover {
-    background-color: #f1efe4;
-    border: 2px solid rgb(224, 223, 210);
+    background-color: #2e2e2e;
   }
   
   .assistant-container .buttons-container {
@@ -80,16 +83,25 @@
   /* Input and textarea styles */
   .assistant-container input, textarea {
     width: calc(100% - 16px);
-    padding: 12px; /* Increased padding */
+    padding: 15px 15px; /* Increased padding */
     margin-top: 10px;
     box-sizing: border-box;
-    background-color: transparent; /* Slight background color */
-    border: 1px solid #dcdbd2;
+    background-color: #2a2a2a60;
+    border: 0.5px solid #3c3c3c;
     border-radius: 6px;
-    color: #282828;
+    color: #fcfbf2;
     font-family: monospace;
   }
+
+  .assistant-container textarea:focus {
+    outline: none; /* Optional: Removes the default focus outline */
+  }
+
+  .assistant-container input:focus {
+    outline: none; /* Optional: Removes the default focus outline */
+  }
   
+
   textarea {
     height: 100px; /* Adjust height as needed */
   }
@@ -98,7 +110,7 @@
   .assistant-container label {
     display: flex;
     margin-top: 20px;
-    color: #282828;
+    color: #fcfbf2;
   }
 
   .paths-grid {
@@ -108,17 +120,17 @@
     grid-template-columns: repeat(2, 1fr); /* Creates a 2-column grid */
     gap: 10px; /* Adjust the gap between grid items */
     margin-top: 20px; /* Space above the grid */
-    background-color: #edebde;
+    background-color: #1c1c1c;
   }
   
   .path-card {
-    border: 1px solid #151515; /* Simple border for the card */
+    border: 0.5px solid #3c3c3c;
     padding: 5px; /* Padding inside the card */
     padding-left: 10px;
     border-radius: 5px; /* Optional: rounded corners */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: simple shadow */
     font-family: monospace;
-    background-color: #333;
+    background-color: #2a2a2a;
     color: #fcfbf2;
   }
 
@@ -128,7 +140,7 @@
         margin-top: 20px;
         padding-left: 10px;
         padding-right: 10px;
-        color: #282828;
+        color: #fcfbf2;
       }
 
       .assistant-container h2 {
@@ -161,4 +173,13 @@
     margin-right: 10px;
   }
 
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }

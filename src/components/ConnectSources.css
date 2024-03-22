@@ -15,33 +15,38 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 8px;
-    border: 2px solid #efeee5;
+    border: none;
 
   }
   
   .connect-sources-button:hover{
-    background-color: #f1efe4;
-    border: 2px solid rgb(224, 223, 210);
+    background-color: #272727;
 
+  }
+
+  .connect-sources-button:hover .Key {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .Key {
+    color: #fcfbf2;
   }
 
   .connect-sources {
-    padding: 10px 25px;
-    background-color: transparent;
+    padding: 10px 15px;
+    background-color: #1e1e1e;
+    border: 0.5px solid #282828;
     color: #282828;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border-radius: 8px;
-    border: 2px solid #efeee5;
     /*box-shadow: 0 8px 16px rgba(0,0,0,0.2);*/
     border-radius: 8px;
-    border: 2px solid #efeee5;
+
   }
   
   .connect-sources:hover{
-    background-color: #f1efe4;
-    border: 2px solid rgb(224, 223, 210);
+    background-color: #353535;
 
   }
   
@@ -56,10 +61,11 @@
   
   .source-card {
     padding: 10px;
-    border: 1px solid #fcfbf2;
+    border: 0.5px solid #363636;
     text-align: center;
     cursor: pointer; /* Optional: Changes the cursor to indicate the card is interactive */
-
+    background-color: #1f1f1f82;
+    border-radius: 8px;
   }
 
   /* Add to your existing styles */
@@ -75,7 +81,7 @@
     box-sizing: border-box; /* Include padding in width calculation */
     background-color: transparent;
     border: 1px solid #dcdbd2;
-    color: #282828;
+    color: #fcfbf2;
     font-family: monospace;
   }
   
@@ -87,18 +93,18 @@
 
   .sources-button {
     padding: 10px 25px;
-    background-color: transparent;
-    color: #282828;
+    background-color: #282828;
+    color: #fcfbf2;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 40px;
     border-radius: 8px;
-    border: 1px solid #dcdbd2;
+    border: none
   }
   
   .sources-button:hover {
-    background-color: #FFFFFF;
+    background-color: #2a2a2a;
   }
 
   .connection-chip {
@@ -107,7 +113,7 @@
     padding: 10px;
     background-color: #749e77; /* Green background */
     color: white;
-    border-radius: 0px;
+    border-radius: 12px;
     z-index: 1000; /* Ensure it's above other content */
   }
 

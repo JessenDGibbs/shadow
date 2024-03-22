@@ -10,7 +10,7 @@ function Modal({ children, onClose, developerText=true }) {
         {children}
         {developerText && (
           <p className="modal-developer-text">
-            Are you a developer? Build your own connection and join Shadowboy's open-source community
+            Want to build your own connection? Join Shadow's open-source community
           </p>
         )}
       </div>

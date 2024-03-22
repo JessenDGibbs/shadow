@@ -13,7 +13,7 @@ const CreateNoteButton = () => {
 
   return (
     <>
-      <button className="button" onClick={openModal}><PlusSquare size={20} /></button>
+      <button className="button" onClick={openModal}><PlusSquare size={20} className='icon'/></button>
       <GeneralModal isOpen={isModalOpen} onClose={closeModal}>
         <SaveThought />
       </GeneralModal>

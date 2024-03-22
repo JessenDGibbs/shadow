@@ -1,0 +1,23 @@
+.legend {
+    position: absolute;
+    top: 100px; /* Adjust as needed */
+    right: 10px; /* Adjust for right-side floating */
+    padding: 10px;
+    background-color: #232323;
+    border: 0.5px solid #383838; 
+    border-radius: 5px;
+    display: flex;
+    margin: 10px;
+    color: #fcfbf2; /* Black text color */
+    display: flex;
+    flex-direction: column;
+}
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .legend-item span {
+    margin-left: 5px;
+  }

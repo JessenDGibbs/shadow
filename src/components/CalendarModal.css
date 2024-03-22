@@ -7,12 +7,12 @@
   .calendar-item-card {
     margin: 2px;
     padding: 10px;
-    background-color: #efede0;
-    border: 1px solid #e1dfce;
+    background-color: #2b2b2b;
+    border: 0.5px solid #929292;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #333;
+    color: #fcfbf2;
     width: 100%;
     text-align: left;
   }
@@ -57,21 +57,20 @@
   }
 
   .open-modal-button {
-    padding: 10px 25px;
-    background-color: transparent;
-    color: #282828;
+    padding: 10px 15px;
+    background-color: #1e1e1e;
+    border: 0.5px solid #282828;    color: #282828;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: monospace;
     /*box-shadow: 0 8px 16px rgba(0,0,0,0.2);*/
     border-radius: 8px;
-    border: 2px solid #efeee5;
     margin-right: 20px;
     gap:10px;
   }
 
   .open-modal-button:hover {
-    background-color: #f1efe4;
+    background-color: #353535;
   }
 
   .header-container {

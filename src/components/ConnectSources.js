@@ -4,6 +4,8 @@ import './ConnectSources.css'; // CSS file for styling
 import { callNotion, callDropbox } from '../api';
 import { Database } from 'react-feather';
 import { useMyContext } from '../contexts/Context'; // Adjust the path as necessary
+import { Key} from 'react-feather';
+
 
 
 
@@ -61,7 +63,7 @@ function ConnectSources({ sources, buttonText, actionText, title, subtitle }) {
   
   return (
     <div className='connect-sources-container'>
-      <button className="connect-sources" onClick={() => setIsModalOpen(true)}><Database size={20} /></button>
+      <button className="connect-sources" onClick={() => setIsModalOpen(true)}><Database size={20} className='icon'/></button>
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
           <h2>{selectedSource ? `Connect ${selectedSource.name}` : title}</h2>
@@ -95,7 +97,7 @@ function ConnectSources({ sources, buttonText, actionText, title, subtitle }) {
               {sources.map((source) => (
                 <div key={source.id} className="source-card">
                   <h3>{source.name}</h3>
-                  <button className="connect-sources-button" onClick={() => handleConnectClick(source)}>{actionText}</button>
+                  <button className="connect-sources-button" onClick={() => handleConnectClick(source)}><Key className='Key' size={20}/></button>
                 </div>
               ))}
             </div>

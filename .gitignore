@@ -24,3 +24,6 @@ yarn-error.log*
 backend/
 .env
 app_local.py
+public/user_content/
+public/dropbox/
+shadowwork.py

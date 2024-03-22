@@ -7,18 +7,27 @@
     background-color: transparent;
     border-radius: 8px; /* Soften edges */
     min-height: 77vh; /* Minimum height for a full editor look */
-    color: #282828;
+    color: #fcfbf2;
     width: 100%;
+    overflow-y: auto;
+      /* Hide scrollbar for Webkit browsers like Chrome, Safari */
+    ::-webkit-scrollbar {
+      display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
   }
 
   .button-group {
     display: flex; /* Align buttons horizontally */
     justify-content: left; /* Center buttons in the container */
-    margin-bottom: 20px; /* Space between button group and the next element */
+    margin-top: 10px; /* Space between button group and the next element */
   }
 
   .button-group button {
-    color: #5f5f5f; /* Light text color for contrast */
+    color: #706e6a; /* Light text color for contrast */
     margin: 0 5px; /* Space between buttons */
     cursor: pointer; /* Change cursor to pointer on hover */
     padding: 10px 25px;
@@ -30,29 +39,31 @@
   }
   
   .button-group button:hover {
-    border-bottom: 2px solid #e7e6dd;
-    border-radius: 0px; /* Highlight active button with a bottom border */
+    background-color: #222222; /* Different background color for active button */
+    color: rgb(182, 177, 163); /* Ensure text is still readable on active button */
+    border-radius: 12px 12px 0px 0px;
   }
   
   .button-group button.active {
-    background-color: transparent; /* Different background color for active button */
-    color: #282828; /* Ensure text is still readable on active button */
-    border-bottom: 2px solid #282828; /* Highlight active button with a bottom border */
-    border-radius: 0px;
+    background-color: #2f2f2f; /* Different background color for active button */
+    color: rgb(182, 177, 163); /* Ensure text is still readable on active button */
+    border-radius: 12px 12px 0px 0px;
   }
   
   .text-input {
     flex: 1; /* Allows input to expand and fill the container's height */
     padding: 16px;
     padding-bottom: 0px;
-    margin: 10px 0; /* Adjusted margin for consistency */
+    padding-top: 0px;
+    margin: 0; /* Adjusted margin for consistency */
     margin-bottom: 0px;
     font-size: 16px; /* Comfortable reading size */
     line-height: 1.5; /* Improve readability */
     max-height: 25px;
     border-radius: 0px; /* Consistency with container border-radius */
     background-color: transparent; /* Slightly off-white for contrast with container */
-    color: #282828; /* High contrast for readability */
+    color: #fcfbf2;
+    letter-spacing: 0.2px;
     outline: none; /* Remove focus outline */
     border: none;
   }
@@ -74,7 +85,7 @@
   }
   
   .action-button:hover {
-    background-color: #f1efe4; /* Darker shade on hover */
+    background-color: #353535; /* Darker shade on hover */
   }
 
   .icon {
@@ -130,8 +141,10 @@
     display: flex;
     align-items: center; /* Aligns items vertically in the center */
     gap: 10px; /* Optional: adds some space between the input and button */
-    border-bottom: 1px solid #e2e2e2;
-
+    background-color: transparent;
+    border: 0.5px solid #2f2f2f;
+    padding: 10px;
+    border-radius: 8px;
   }
 
   .documents-grid {
@@ -161,29 +174,25 @@
 .view-toggle button {
   background-color: transparent; /* Make buttons transparent */
   border: none; /* Remove borders */
-  color: #aaa; /* Light grey color for a discrete look */
+  color: #2f2f2f; /* Light text color for contrast */
   font-size: 12px; /* Adjust font size as needed */
   padding: 5px 10px; /* Minimal padding */
   cursor: pointer; /* Cursor to indicate clickable */
   transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
-.view-toggle button:hover {
-  color: #666; /* Darker grey on hover for better visibility */
-}
 
 .view-toggle button.active {
-  color: #434343; /* Even darker for the active view mode */
+  color: #898784; /* Even darker for the active view mode */
 }
 
 .no-data-card {
   padding: 20px;
-  border: 1px solid #d5d3c6;
+  background-color: transparent;
   border-radius: 8px;
   text-align: left;
-  color: #3f3f3f;
+  color: #f2f1e6;
   margin-top: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
 }
 
@@ -192,16 +201,20 @@
   padding-left: 20px;
   margin-bottom: 40px;
   margin-top: 40px;
+  list-style-type: none; /* Removes the default list numbering */
+  padding-left: 0;
 }
 
 .get-started-list li {
   margin-bottom: 10px;
-  border: 1px dashed #d5d3c6;
-  padding: 10px;
+  background-color: #232323;
+  padding: 20px;
   margin-top: 15px;
   margin-bottom: 15px;
   border-radius: 8px;
   line-height: 1.5;
+  border: 0.5px solid #2f2f2f;
+
 }
 
 .document-type-pill.selected {

@@ -1,0 +1,11 @@
+.graph-legend-container {
+    position: relative; /* This makes it the positioning context */
+    width: 800px; /* Match the width of your SVG or as required */
+    height: 800px; /* Match the height of your SVG or as required */
+  }
+  
+  .d3-component {
+    /* Your existing styles for the graph */
+    width: 100%;
+    height: 100%;
+  }

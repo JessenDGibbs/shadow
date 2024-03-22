@@ -24,7 +24,7 @@ function CalendarModal() {
 
         const attemptFetch = async () => {
             try {
-                const response = await fetch('https://b496-2605-8d80-1120-814-3ceb-59e5-ff-fa43.ngrok-free.app/calendarContent');
+                const response = await fetch('http://127.0.0.1:8080/calendarContent');
                 if (!response.ok) {
                     throw new Error(`Server responded with status ${response.status}`);
                 }
@@ -87,12 +87,12 @@ function CalendarModal() {
     
       return (
         <div className='calendar-modal-container'>
-          <button className="open-modal-button" onClick={() => setIsModalOpen(true)}><Activity size={20}/></button>
+          <button className="open-modal-button" onClick={() => setIsModalOpen(true)}><Activity size={20} className='icon'/></button>
           {isModalOpen && (
             <Modal onClose={() => setIsModalOpen(false)} title="Calendar" developerText={false}>
               <div className="header-container">
                     <button class="open-modal-button" onClick={fetchItems}>
-                        <RefreshCcw className={isFetching ? "spin-animation" : ""} size={20}/>
+                        <RefreshCcw className={isFetching ? "spin-animation" : "icon"} size={20}/>
                     </button>
                     <h3>Activity Calendar</h3>
                 </div>

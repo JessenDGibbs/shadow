@@ -6,6 +6,8 @@ import { X, Calendar, Trash } from 'react-feather';
 import { sendToDelete } from '../api';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import ErrorBoundary from './ErrorBoundary';
+import { useMyContext } from '../contexts/Context';
+
 
 // You need to set workerSrc to point to the PDF.js worker script.
 // This is required for the library to work.
@@ -22,15 +24,17 @@ function DocumentCard({ document, metadata, id }) {
   const [imageUrl, setImageUrl] = useState('');
   const [isVisible, setIsVisible] = useState(true); // Add this line
   const [error, setError] = useState('');
+  const { graphFilter, manageGraphFilter } = useMyContext();
+
 
 
 
   
   useEffect(() => {
     const loadFile = async (attempt = 1) => {
-      if (metadata.path) {
+      if (metadata.path && metadata.path != "None") {
         try {
-          const response = await fetch(`https://b496-2605-8d80-1120-814-3ceb-59e5-ff-fa43.ngrok-free.app/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`http://127.0.0.1:8080/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -51,9 +55,9 @@ function DocumentCard({ document, metadata, id }) {
   
   useEffect(() => {
     const loadImage = async (attempt = 1) => {
-      if (metadata.path) {
+      if (metadata.path && metadata.path != "None") {
         try {
-          const response = await fetch(`https://b496-2605-8d80-1120-814-3ceb-59e5-ff-fa43.ngrok-free.app/getFile?file_path=${metadata.path}`);
+          const response = await fetch(`http://127.0.0.1:8080/getFile?file_path=${metadata.path}`);
           if (!response.ok) throw new Error('Network response was not ok.');
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
@@ -80,6 +84,17 @@ function DocumentCard({ document, metadata, id }) {
   };
 
   const closeModal = () => setShowModal(!showModal);
+
+  const toggleGraphFilter = (filter) => {
+    if (graphFilter == null){
+      manageGraphFilter(filter);
+    } else if (graphFilter == filter) {
+      manageGraphFilter(null);
+    } else {
+      manageGraphFilter(filter);
+    }
+
+  };
     
   
   const onDocumentLoadSuccess = ({ numPages }) => {
@@ -197,7 +212,7 @@ function DocumentCard({ document, metadata, id }) {
     }
   } else if (metadata.type === 'Citation' || metadata.type === 'Annotation') {
     return (
-      <div className="document-card" onClick={toggleModal} style={{fontFamily: 'Comic Sans MS', size: '24px', cursor: 'pointer', boxShadow: 'none', 'border': '2px dashed #e6e5d9'}}>
+      <div className="document-card" onClick={toggleModal} style={{fontFamily: 'Comic Sans MS', size: '24px', cursor: 'pointer', boxShadow: 'none'}}>
         <ReactMarkdown className="document-content">{document}</ReactMarkdown>
         {showModal && (
           <div className="modal-backdrop">
@@ -217,18 +232,18 @@ function DocumentCard({ document, metadata, id }) {
     </div>
     );
   } else {
-    return (
-      <div className="document-card" style={{boxShadow: 'none', 'border': '2px dashed #e6e5d9'}}>
-        <ReactMarkdown className="document-content">{document}</ReactMarkdown>
-        <div className="metadata-container" >
-          <p className={`metadata-type-pill ${getMetadataTypeClass(metadata.type)}`}>{metadata.type}</p>
-          <p className="metadata-type"><Calendar size={16}/> {metadata.date}</p>
-          <button className="delete-button icon-button" onClick={handleDelete}>
-            <Trash size={16} />
-          </button>
+      return (
+        <div className="document-card" style={{boxShadow: 'none'}} onClick={metadata.type == "concept" ? () => {toggleGraphFilter(document)} : null}>
+          <ReactMarkdown className="document-content">{document}</ReactMarkdown>
+          <div className="metadata-container" >
+            <p className={`metadata-type-pill ${getMetadataTypeClass(metadata.type)}`}>{metadata.type}</p>
+            <p className="metadata-type"><Calendar size={16}/> {metadata.date}</p>
+            <button className="delete-button icon-button" onClick={handleDelete}>
+              <Trash size={16} />
+            </button>
+          </div>
         </div>
-      </div>
-    );
+      );
   }
 }
 

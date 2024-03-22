@@ -1,0 +1,37 @@
+
+.carousel-container {
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Smooth scrolling and snap effect */
+    display: flex; /* Centers the cards horizontally */
+    justify-content: center; /* Works with flex display */
+    width: fill; /* Match the card width */
+    margin: 0px; /* Center the container if it's within a larger view */
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #353535;
+    border-radius: 8px;
+  }
+  
+  .carousel {
+    display: flex;
+    flex-direction: row;
+    gap: 0px; /* Space between cards */
+    width: 100%;
+
+    
+    
+  }
+  
+  .card {
+    flex: 0 0 250px; /* Flex basis set to the card width, not allowed to grow or shrink */
+    height: 150px; /* Height can adjust based on content */
+    aspect-ratio: 1.586; /* Keeps the credit card aspect ratio */
+    background-color: #5a5a5a;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    scroll-snap-align: start; /* Ensures the card aligns properly when scrolling */
+    margin: 10px;
+    color: white;
+  }
+
